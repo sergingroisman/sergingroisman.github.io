@@ -1,0 +1,239 @@
+# ============================================================
+# Butterfly Theme Configuration — Sérgio Santos
+# https://butterfly.js.org/
+# ============================================================
+
+# ---------------------------------------------------------------
+# Site Info
+# ---------------------------------------------------------------
+favicon: /img/favicon.png
+
+# ---------------------------------------------------------------
+# Menu (navegação)
+# ---------------------------------------------------------------
+nav:
+  logo: #image
+  display_title: true
+  fixed: false
+
+menu:
+  Home: / || fas fa-home
+  Archives: /archives/ || fas fa-archive
+  Tags: /tags/ || fas fa-tags
+  Categories: /categories/ || fas fa-folder-open
+  About: /about/ || fas fa-user
+
+# ---------------------------------------------------------------
+# Banner / Capa
+# ---------------------------------------------------------------
+index_img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80'
+default_top_img: false
+archive_img:
+tag_img:
+tag_per_img:
+category_img:
+category_per_img:
+
+# ---------------------------------------------------------------
+# Informações do autor (sidebar)
+# ---------------------------------------------------------------
+avatar:
+  img: https://avatars.githubusercontent.com/sergingroisman
+  effect: false
+
+social:
+  fab fa-github: https://github.com/sergingroisman || GitHub
+  fab fa-linkedin: https://linkedin.com/in/sergin-groisman || LinkedIn
+
+# ---------------------------------------------------------------
+# Aparência
+# ---------------------------------------------------------------
+theme_color:
+  enable: true
+  main: '#1565c0'
+  paginator: '#1565c0'
+  button_hover: '#0d47a1'
+  text_selection: '#90caf9'
+  link_color: '#1565c0'
+  meta_color: '#555'
+  hr_color: '#A4D8FA'
+  code_foreground: '#F8BBD0'
+  code_background: 'rgba(0, 0, 0, 0.40)'
+  toc_color: '#1565c0'
+  blockquote_padding_color: '#49b1f5'
+  blockquote_background_color: '#d2f0ff'
+  scrollbar_color: '#49b1f5'
+  meta_theme_color_light: 'ffffff'
+  meta_theme_color_dark: '#0d0d0d'
+
+# Modo escuro
+dark_mode:
+  enable: true
+  default: light
+
+# ---------------------------------------------------------------
+# Banner (texto de destaque)
+# ---------------------------------------------------------------
+subtitle:
+  enable: true
+  effect: true
+  loop: true
+  source: false
+  sub:
+    - Engenheiro de Software Sênior
+    - Node.js · Golang · AWS
+    - Sistemas Distribuídos e Microserviços
+    - Avanade · 7 anos de experiência
+
+# ---------------------------------------------------------------
+# Posts — configurações gerais
+# ---------------------------------------------------------------
+post_meta:
+  page:
+    date_type: created
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+  post:
+    date_type: both
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+
+post_copyright:
+  enable: true
+  decode: false
+  author_href:
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt_BR
+
+reward:
+  enable: false
+
+# ---------------------------------------------------------------
+# TOC (sumário lateral)
+# ---------------------------------------------------------------
+toc:
+  post: true
+  page: false
+  number: true
+  expand: false
+  style_simple: false
+  scroll_percent: true
+
+# ---------------------------------------------------------------
+# Rodapé
+# ---------------------------------------------------------------
+footer:
+  owner:
+    enable: true
+    since: 2026
+  custom_text: Feito com ☕ e <a href="https://hexo.io">Hexo</a> · Tema <a href="https://butterfly.js.org">Butterfly</a>
+  copyright: true
+
+# ---------------------------------------------------------------
+# Sidebar
+# ---------------------------------------------------------------
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: Engenheiro de Software Sênior na Avanade. Apaixonado por sistemas distribuídos, backend de alta performance e café.
+    button:
+      enable: true
+      icon: fab fa-github
+      text: Ver GitHub
+      link: https://github.com/sergingroisman
+  card_announcement:
+    enable: false
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+    sort_order:
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+    order_by: name
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+    orderby: random
+    order: 1
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+    sort_order:
+
+# ---------------------------------------------------------------
+# Busca
+# ---------------------------------------------------------------
+local_search:
+  enable: true
+  preload: false
+  CDN:
+
+# ---------------------------------------------------------------
+# Código
+# ---------------------------------------------------------------
+highlight_theme: mac light
+highlight_copy: true
+highlight_lang: true
+highlight_shrink: false
+highlight_height_limit: false
+code_word_wrap: false
+
+# ---------------------------------------------------------------
+# Animações
+# ---------------------------------------------------------------
+animation: true
+
+# ---------------------------------------------------------------
+# Lazyload de imagens
+# ---------------------------------------------------------------
+lazyload:
+  enable: true
+  field: site
+  placeholder:
+  error:
+
+# ---------------------------------------------------------------
+# PWA (opcional, deixar false por enquanto)
+# ---------------------------------------------------------------
+pwa: false
+
+# ---------------------------------------------------------------
+# Google Analytics (adicione seu ID quando tiver)
+# ---------------------------------------------------------------
+google_analytics:
+  enable: false
+  id: # G-XXXXXXXXXX
+
+# ---------------------------------------------------------------
+# Google AdSense (adicione quando tiver tráfego)
+# ---------------------------------------------------------------
+google_adsense:
+  enable: false
+  auto_ads: true
+  js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
+  client: # ca-pub-XXXXXXXXXX
+  enable_page_level_ads: true
