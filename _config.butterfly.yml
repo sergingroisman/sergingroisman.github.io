@@ -150,7 +150,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: Sênior na Avanade. Node.js, Golang, AWS. Fã de anime underground, café forte, Star Wars e RPG no Switch. ☕⚔️
+    description: 7 anos construindo coisas que não caem. Quando não tô no terminal, tô no Switch ou discutindo anime que ninguém assistiu.
     button:
       enable: true
       icon: fab fa-github
