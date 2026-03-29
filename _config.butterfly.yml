@@ -26,7 +26,7 @@ menu:
 # ---------------------------------------------------------------
 # Banner / Capa
 # ---------------------------------------------------------------
-index_img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80'
+index_img: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1600&q=90'
 default_top_img: false
 archive_img:
 tag_img:
@@ -39,7 +39,7 @@ category_per_img:
 # ---------------------------------------------------------------
 avatar:
   img: https://avatars.githubusercontent.com/sergingroisman
-  effect: false
+  effect: true
 
 social:
   fab fa-github: https://github.com/sergingroisman || GitHub
@@ -50,26 +50,26 @@ social:
 # ---------------------------------------------------------------
 theme_color:
   enable: true
-  main: '#1565c0'
-  paginator: '#1565c0'
-  button_hover: '#0d47a1'
-  text_selection: '#90caf9'
-  link_color: '#1565c0'
-  meta_color: '#555'
-  hr_color: '#A4D8FA'
-  code_foreground: '#F8BBD0'
-  code_background: 'rgba(0, 0, 0, 0.40)'
-  toc_color: '#1565c0'
-  blockquote_padding_color: '#49b1f5'
-  blockquote_background_color: '#d2f0ff'
-  scrollbar_color: '#49b1f5'
-  meta_theme_color_light: 'ffffff'
+  main: '#c41e3a'
+  paginator: '#c41e3a'
+  button_hover: '#8b0000'
+  text_selection: '#c41e3a'
+  link_color: '#c41e3a'
+  meta_color: '#888'
+  hr_color: '#3a0a0a'
+  code_foreground: '#ff8a80'
+  code_background: 'rgba(0, 0, 0, 0.60)'
+  toc_color: '#c41e3a'
+  blockquote_padding_color: '#c41e3a'
+  blockquote_background_color: 'rgba(196, 30, 58, 0.08)'
+  scrollbar_color: '#c41e3a'
+  meta_theme_color_light: '1a1a1a'
   meta_theme_color_dark: '#0d0d0d'
 
-# Modo escuro
+# Modo escuro — dark como padrão
 dark_mode:
   enable: true
-  default: light
+  default: dark
 
 # ---------------------------------------------------------------
 # Banner (texto de destaque)
@@ -80,10 +80,12 @@ subtitle:
   loop: true
   source: false
   sub:
-    - Engenheiro de Software Sênior
+    - Engenheiro de Software Sênior ☕
     - Node.js · Golang · AWS
-    - Sistemas Distribuídos e Microserviços
-    - Avanade · 7 anos de experiência
+    - Fã de Angel's Egg e Chainsaw Man
+    - RPG, Switch e sistemas distribuídos
+    - Underground. Coffee. Code.
+    - "A vida imita a arte — ou o código?"
 
 # ---------------------------------------------------------------
 # Posts — configurações gerais
@@ -130,7 +132,7 @@ footer:
   owner:
     enable: true
     since: 2026
-  custom_text: Feito com ☕ e <a href="https://hexo.io">Hexo</a> · Tema <a href="https://butterfly.js.org">Butterfly</a>
+  custom_text: Feito com ☕, anime e muito café · <a href="https://hexo.io">Hexo</a> + <a href="https://butterfly.js.org">Butterfly</a>
   copyright: true
 
 # ---------------------------------------------------------------
@@ -148,7 +150,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: Engenheiro de Software Sênior na Avanade. Apaixonado por sistemas distribuídos, backend de alta performance e café.
+    description: Sênior na Avanade. Node.js, Golang, AWS. Fã de anime underground, café forte, Star Wars e RPG no Switch. ☕⚔️
     button:
       enable: true
       icon: fab fa-github
@@ -195,7 +197,7 @@ local_search:
 # ---------------------------------------------------------------
 # Código
 # ---------------------------------------------------------------
-highlight_theme: mac light
+highlight_theme: mac dark
 highlight_copy: true
 highlight_lang: true
 highlight_shrink: false
