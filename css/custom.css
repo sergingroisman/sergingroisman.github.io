@@ -239,6 +239,39 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ----------------------------------------------------------------
+   Force dark on ALL layout wrappers — Butterfly light mode override
+   ---------------------------------------------------------------- */
+#main,
+#content,
+#body-wrap,
+.layout,
+.layout-wrapper,
+.content-inner,
+.post-content,
+.article-container,
+article,
+.page,
+.card-post-container,
+#post,
+.post,
+[id="content-inner"],
+[class*="content"],
+[data-theme="light"] body,
+[data-theme="light"] #main,
+[data-theme="light"] #content,
+[data-theme="light"] .layout,
+[data-theme="light"] .content-inner,
+[data-theme="light"] .post-content,
+[data-theme="light"] .article-container,
+[data-theme="light"] article,
+[data-theme="light"] .card-post-container,
+[data-theme="light"] #aside-content .card-widget,
+[data-theme="light"] .recent-post-item {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* ----------------------------------------------------------------
    Article Content — headings, sections
    ---------------------------------------------------------------- */
 .article-container {
