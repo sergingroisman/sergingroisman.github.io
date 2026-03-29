@@ -684,5 +684,110 @@
     </div>
   </footer>
 
+
+  <!-- CURSOR DOT + SCROLL REVEAL -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <style>
+    /* ================================================================
+       CURSOR DOT
+       ================================================================ */
+    #cursor-dot {
+      position: fixed;
+      top: 0; left: 0;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease, opacity 0.3s ease, width 0.2s ease, height 0.2s ease;
+      opacity: 0;
+    }
+
+    body:has(a:hover) #cursor-dot,
+    body:has(button:hover) #cursor-dot {
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: 1px solid var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ================================================================
+       SCROLL REVEAL
+       ================================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      #cursor-dot { display: none; }
+    }
+  </style>
+
+  <script>
+    // ── Cursor dot ────────────────────────────────────────────────
+    (function () {
+      const dot = document.getElementById('cursor-dot');
+      let raf;
+
+      document.addEventListener('mousemove', function (e) {
+        dot.style.opacity = '1';
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          dot.style.left = e.clientX + 'px';
+          dot.style.top  = e.clientY + 'px';
+        });
+      });
+
+      document.addEventListener('mouseleave', function () {
+        dot.style.opacity = '0';
+      });
+    })();
+
+    // ── Scroll reveal ─────────────────────────────────────────────
+    (function () {
+      const els = document.querySelectorAll(
+        '.section, .timeline-item, .skill, .interest-card'
+      );
+
+      els.forEach(function (el) { el.classList.add('reveal'); });
+
+      // stagger children inside each section
+      document.querySelectorAll('.timeline-item').forEach(function (el, i) {
+        el.classList.add('reveal-delay-' + Math.min(i % 4 + 1, 4));
+      });
+
+      document.querySelectorAll('.interest-card').forEach(function (el, i) {
+        el.classList.add('reveal-delay-' + Math.min(i % 4 + 1, 4));
+      });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
 </body>
 </html>
