@@ -22,6 +22,7 @@ menu:
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder-open
   About: /about/ || fas fa-user
+  Brag: /brag/ || fas fa-trophy
 
 # ---------------------------------------------------------------
 # Banner / Capa
@@ -39,7 +40,7 @@ category_per_img:
 # ---------------------------------------------------------------
 avatar:
   img: https://avatars.githubusercontent.com/sergingroisman
-  effect: true
+  effect: false
 
 social:
   fab fa-github: https://github.com/sergingroisman || GitHub

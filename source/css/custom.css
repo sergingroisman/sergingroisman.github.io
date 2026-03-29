@@ -1,33 +1,87 @@
 /* ================================================================
-   JUNKIE EDITORIAL — custom.css
+   JUNKIE EDITORIAL — custom.css v2
    Hexo Butterfly Theme Visual Override
-   Aesthetic: Brazilian underground zine, Angel's Egg, Chainsaw Man
-   Rules: sharp edges, crimson only, grain, no corporate vibes
+   Research-based: Linear precision × underground editorial × dark anime
    ================================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,700;1,900&family=Space+Mono:ital@0;1&display=swap');
 
-/* ----------------------------------------------------------------
-   Design Tokens
-   ---------------------------------------------------------------- */
+/* ================================================================
+   1. DESIGN TOKENS
+   ================================================================ */
 :root {
-  --bg:          #0d0d0d;
-  --surface:     #111111;
-  --border:      #1e1e1e;
-  --accent:      #c41e3a;
-  --accent-dark: #8b0000;
-  --text:        #ffffff;
-  --meta:        #888888;
-  --code-bg:     #0a0a0a;
-  --font-heading: 'Barlow Condensed', sans-serif;
-  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
-  --transition:   0.25s ease;
-  --glow:         0 0 12px rgba(196, 30, 58, 0.3);
+  /* Palette */
+  --j-bg:           #0d0d0d;
+  --j-bg-elevated:  #131313;
+  --j-surface:      #171717;
+  --j-surface-2:    #1f1f1f;
+  --j-border:       #2a2a2a;
+  --j-border-soft:  #202020;
+
+  /* Text */
+  --j-text:         #eceae7;   /* warm off-white — less harsh than pure #fff */
+  --j-text-2:       #a3a09c;   /* secondary */
+  --j-meta:         #636059;   /* dates, labels */
+
+  /* Accent — single crimson, used sparingly */
+  --j-accent:       #d62b45;
+  --j-accent-dim:   rgba(214, 43, 69, 0.15);
+  --j-accent-glow:  0 0 18px rgba(214, 43, 69, 0.22);
+
+  /* Code */
+  --j-code-bg:      #0a0a0a;
+
+  /* Type */
+  --j-font-display: 'Barlow Condensed', sans-serif;
+  --j-font-mono:    'Space Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --j-font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+
+  /* Motion */
+  --j-ease:         0.22s ease;
 }
 
-/* ----------------------------------------------------------------
-   Global Reset — sharp edges, dark base
-   ---------------------------------------------------------------- */
+/* ================================================================
+   2. BUTTERFLY CSS-VAR OVERRIDE — dark theme layer
+      This is the authoritative layer — fixes things at the source.
+   ================================================================ */
+[data-theme='dark'] {
+  --global-bg:        var(--j-bg);
+  --font-color:       var(--j-text);
+  --card-bg:          var(--j-surface);
+  --sidebar-bg:       var(--j-surface);
+  --sidebar-menu-bg:  var(--j-bg-elevated);
+  --search-bg:        var(--j-bg);
+  --search-input-color: var(--j-text);
+  --search-a-color:   var(--j-text);
+  --preloader-bg:     var(--j-bg);
+  --preloader-color:  var(--j-text);
+  --tab-border-color: var(--j-border);
+  --tab-button-bg:    var(--j-surface);
+  --tab-button-color: var(--j-text-2);
+  --tab-button-hover-bg: var(--j-surface-2);
+  --tab-button-active-bg: var(--j-bg);
+  --btn-hover-color:  var(--j-text);
+  --btn-color:        var(--j-text);
+  --btn-bg:           var(--j-surface-2);
+  --text-bg-hover:    var(--j-accent-dim);
+  --light-grey:       var(--j-text-2);
+  --dark-grey:        var(--j-meta);
+  --white:            var(--j-text);
+  --text-highlight-color: var(--j-text);
+  --blockquote-color: var(--j-text-2);
+  --blockquote-bg:    var(--j-accent-dim);
+  --toc-link-color:   var(--j-meta);
+  --scrollbar-color:  var(--j-border);
+  --timeline-bg:      var(--j-surface);
+  --zoom-bg:          var(--j-bg);
+  --hr-border:        var(--j-border);
+  --hr-before-color:  var(--j-meta);
+  --mark-bg:          rgba(214, 43, 69, 0.25);
+}
+
+/* ================================================================
+   3. GLOBAL RESET
+   ================================================================ */
 *,
 *::before,
 *::after {
@@ -37,212 +91,90 @@
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: var(--accent) #1a1a1a;
+  scrollbar-color: var(--j-accent) var(--j-bg-elevated);
 }
 
 body {
-  background-color: var(--bg) !important;
-  color: var(--text) !important;
+  background-color: var(--j-bg) !important;
+  color: var(--j-text) !important;
+  font-family: var(--j-font-body) !important;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ----------------------------------------------------------------
-   Film Grain Overlay (fixed, full-screen, non-interactive)
-   ---------------------------------------------------------------- */
+/* ================================================================
+   4. FILM GRAIN — body overlay
+   ================================================================ */
 body::after {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0.09;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 180px 180px;
-  mix-blend-mode: overlay;
-}
-
-/* ----------------------------------------------------------------
-   Scrollbar (webkit)
-   ---------------------------------------------------------------- */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-dark);
-}
-
-/* ----------------------------------------------------------------
-   Typography — Barlow Condensed bold italic everywhere
-   ---------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6,
-.article-title,
-.site-name,
-.site-title {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  font-style: italic !important;
-  letter-spacing: -0.02em;
-}
-
-/* ----------------------------------------------------------------
-   Navbar — Frosted Dark Glass
-   ---------------------------------------------------------------- */
-#nav {
-  background: rgba(13, 13, 13, 0.88) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border-bottom: 1px solid var(--border) !important;
-  box-shadow: none !important;
-}
-
-#nav .site-name,
-#nav .site-name a {
-  font-family: var(--font-heading) !important;
-  font-style: italic !important;
-  font-weight: 900 !important;
-  font-size: 1.4rem !important;
-  letter-spacing: -0.03em;
-  color: var(--text) !important;
-}
-
-#nav .menus_item a,
-#nav .site-page {
-  color: var(--text) !important;
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  font-style: italic !important;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: color var(--transition) !important;
-}
-
-#nav .menus_item a:hover {
-  color: var(--accent) !important;
-}
-
-#nav-toggle-icon .site-page,
-#nav .toggle-menu {
-  color: var(--text) !important;
-}
-
-/* ----------------------------------------------------------------
-   Hero / Page Header — grain overlay + crimson text glow
-   ---------------------------------------------------------------- */
-#page-header {
-  position: relative;
-  background-color: #0a0a0a !important;
-}
-
-/* Extra grain on hero only */
-#page-header::after {
-  content: '';
-  position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.11;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  z-index: 9998;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 180px 180px;
-  mix-blend-mode: overlay;
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
 }
 
-#page-header .site-info {
-  position: relative;
-  z-index: 2;
-}
+/* ================================================================
+   5. SCROLLBAR
+   ================================================================ */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--j-bg-elevated); }
+::-webkit-scrollbar-thumb { background: var(--j-accent); }
+::-webkit-scrollbar-thumb:hover { background: #b82438; }
 
-#page-header .site-title {
-  font-family: var(--font-heading) !important;
-  font-style: italic !important;
+/* ================================================================
+   6. TYPOGRAPHY SYSTEM
+   Barlow Condensed only for display headings.
+   Body uses system font for legibility.
+   ================================================================ */
+
+/* Display headings — Barlow Condensed Bold Italic */
+.site-name,
+.site-name a,
+.site-title,
+h1, h2, h3 {
+  font-family: var(--j-font-display) !important;
   font-weight: 900 !important;
-  color: var(--text) !important;
-  text-shadow: 0 0 80px rgba(196, 30, 58, 0.45);
-}
-
-#page-header .site-subtitle,
-#page-header .typed-cursor {
-  color: var(--meta) !important;
-}
-
-/* ----------------------------------------------------------------
-   Links — crimson underline slides in from left
-   ---------------------------------------------------------------- */
-.article-entry a,
-.recent-post-item .article-title a,
-#aside-content a,
-.card-widget a {
-  color: var(--text) !important;
-  text-decoration: none !important;
-  background-image: linear-gradient(var(--accent), var(--accent));
-  background-size: 0% 1px;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  transition: background-size 0.35s ease, color var(--transition) !important;
-}
-
-.article-entry a:hover,
-.recent-post-item .article-title a:hover,
-#aside-content a:hover,
-.card-widget a:hover {
-  background-size: 100% 1px;
-  color: var(--accent) !important;
-}
-
-/* ----------------------------------------------------------------
-   Post Cards — surface + crimson glow on hover
-   ---------------------------------------------------------------- */
-.recent-post-item {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  box-shadow: none !important;
-  transition: box-shadow var(--transition), border-color var(--transition) !important;
-}
-
-.recent-post-item:hover {
-  box-shadow: var(--glow) !important;
-  border-color: var(--accent-dark) !important;
-}
-
-.recent-post-item .article-title {
-  font-family: var(--font-heading) !important;
   font-style: italic !important;
+  letter-spacing: -0.02em;
+  color: var(--j-text) !important;
+}
+
+/* Article headings keep display font but are less extreme */
+#article-container h4,
+#article-container h5,
+#article-container h6 {
+  font-family: var(--j-font-display) !important;
   font-weight: 700 !important;
-  color: var(--text) !important;
+  font-style: italic !important;
+  color: var(--j-text) !important;
 }
 
-/* Arrow motif — appears on card hover */
-.recent-post-item:hover .article-title a::before {
-  content: '→ ';
-  color: var(--accent);
-  font-style: normal;
+/* Article title on cards */
+.article-title,
+.article-title a {
+  font-family: var(--j-font-display) !important;
+  font-weight: 900 !important;
+  font-style: italic !important;
+  color: var(--j-text) !important;
 }
 
-.recent-post-item .article-meta,
-.recent-post-item .article-meta-wrap,
-.recent-post-item .article-meta-label {
-  color: var(--meta) !important;
-  font-family: var(--font-heading) !important;
+/* Body copy */
+#article-container p,
+#article-container li {
+  font-family: var(--j-font-body) !important;
+  color: var(--j-text) !important;
+  line-height: 1.8;
+  font-size: 0.95rem;
 }
 
-/* ----------------------------------------------------------------
-   Force dark on ALL layout wrappers — Butterfly light mode override
-   ---------------------------------------------------------------- */
+/* ================================================================
+   7. GLOBAL SURFACES — all layout wrappers forced dark
+   ================================================================ */
 #main,
-#content,
 #body-wrap,
 .layout,
 .layout-wrapper,
@@ -252,350 +184,591 @@ h1, h2, h3, h4, h5, h6,
 article,
 .page,
 .card-post-container,
-#post,
-.post,
-[id="content-inner"],
-[class*="content"],
-[data-theme="light"] body,
-[data-theme="light"] #main,
-[data-theme="light"] #content,
-[data-theme="light"] .layout,
-[data-theme="light"] .content-inner,
-[data-theme="light"] .post-content,
-[data-theme="light"] .article-container,
-[data-theme="light"] article,
-[data-theme="light"] .card-post-container,
-[data-theme="light"] #aside-content .card-widget,
-[data-theme="light"] .recent-post-item {
-  background-color: var(--bg) !important;
-  color: var(--text) !important;
+#post {
+  background-color: var(--j-bg) !important;
+  color: var(--j-text) !important;
 }
 
-/* ----------------------------------------------------------------
-   Article Content — headings, sections
-   ---------------------------------------------------------------- */
+/* ================================================================
+   8. NAVBAR — refined frosted dark
+   ================================================================ */
+#nav {
+  background: rgba(13, 13, 13, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid var(--j-border) !important;
+  box-shadow: none !important;
+}
+
+#nav .site-name,
+#nav .site-name a {
+  font-size: 1.3rem !important;
+  color: var(--j-text) !important;
+  letter-spacing: -0.03em;
+}
+
+#nav .menus_item a,
+#nav .site-page {
+  font-family: var(--j-font-display) !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--j-text-2) !important;
+  transition: color var(--j-ease) !important;
+}
+
+#nav .menus_item a:hover {
+  color: var(--j-text) !important;
+}
+
+#nav-toggle-icon .site-page,
+#nav .toggle-menu {
+  color: var(--j-text) !important;
+}
+
+/* ================================================================
+   9. HERO / PAGE HEADER
+   ================================================================ */
+#page-header {
+  position: relative;
+  background-color: #090909 !important;
+}
+
+/* Grain on hero */
+#page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+/* Crimson bottom vignette */
+#page-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(214, 43, 69, 0.04), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#page-header .site-info {
+  position: relative;
+  z-index: 2;
+}
+
+#page-header .site-title {
+  color: var(--j-text) !important;
+  text-shadow: 0 2px 40px rgba(214, 43, 69, 0.3);
+}
+
+#page-header .site-subtitle,
+#page-header .typed-cursor {
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.85rem !important;
+  color: var(--j-meta) !important;
+  letter-spacing: 0.04em;
+}
+
+/* ================================================================
+   10. LINKS — crimson underline slides in from left
+   ================================================================ */
+.article-entry a:not(.tag),
+.recent-post-item .article-title a,
+#aside-content a,
+.card-widget a {
+  color: var(--j-text-2) !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(var(--j-accent), var(--j-accent));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease, color var(--j-ease) !important;
+}
+
+.article-entry a:hover:not(.tag),
+.recent-post-item .article-title a:hover,
+#aside-content a:hover,
+.card-widget a:hover {
+  background-size: 100% 1px;
+  color: var(--j-text) !important;
+}
+
+/* ================================================================
+   11. POST CARDS
+   ================================================================ */
+.recent-post-item {
+  background: var(--j-surface) !important;
+  border: 1px solid var(--j-border) !important;
+  box-shadow: none !important;
+  transition: box-shadow var(--j-ease), border-color var(--j-ease) !important;
+}
+
+.recent-post-item:hover {
+  box-shadow: var(--j-accent-glow) !important;
+  border-color: rgba(214, 43, 69, 0.4) !important;
+}
+
+.recent-post-item .article-title a {
+  color: var(--j-text) !important;
+  background: none !important;
+  transition: color var(--j-ease) !important;
+}
+
+.recent-post-item .article-title a:hover {
+  color: var(--j-accent) !important;
+}
+
+/* → arrow motif on hover */
+.recent-post-item:hover .article-title a::before {
+  content: '→ ';
+  color: var(--j-accent);
+  font-style: normal;
+  font-family: var(--j-font-body);
+}
+
+.recent-post-item .article-meta,
+.recent-post-item .article-meta-wrap,
+.recent-post-item .article-meta-label {
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.72rem !important;
+  color: var(--j-meta) !important;
+  letter-spacing: 0.04em;
+}
+
+/* ================================================================
+   12. ARTICLE CONTENT
+   ================================================================ */
 .article-container {
   background: transparent !important;
 }
 
 #article-container h1,
 #article-container h2,
-#article-container h3,
-#article-container h4 {
-  font-family: var(--font-heading) !important;
-  font-style: italic !important;
-  font-weight: 700 !important;
-  color: var(--text) !important;
-  border-left: 3px solid var(--accent);
-  padding-left: 12px;
+#article-container h3 {
+  border-left: 2px solid var(--j-accent);
+  padding-left: 14px;
   margin-left: 0;
 }
 
+#article-container h2 {
+  font-size: 1.7rem !important;
+}
+
+#article-container h3 {
+  font-size: 1.3rem !important;
+}
+
+/* Section prefix — editorial label */
 #article-container h2::before {
   content: '// ';
-  color: var(--accent);
+  color: var(--j-accent);
   font-weight: 900;
   font-style: normal;
+  opacity: 0.7;
 }
 
-#article-container p,
-#article-container li {
-  color: rgba(255, 255, 255, 0.87) !important;
-  line-height: 1.75;
-}
-
-/* ----------------------------------------------------------------
-   Code Blocks — terminal dark, crimson accents
-   ---------------------------------------------------------------- */
+/* ================================================================
+   13. CODE BLOCKS — terminal aesthetic
+   ================================================================ */
 pre,
 figure.highlight,
 .highlight {
-  background: var(--code-bg) !important;
-  border: 1px solid var(--border) !important;
+  background: var(--j-code-bg) !important;
+  border: 1px solid var(--j-border) !important;
   box-shadow: none !important;
 }
 
 code {
-  font-family: var(--font-mono) !important;
-  background: rgba(196, 30, 58, 0.1) !important;
-  color: #ff8a80 !important;
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.82em !important;
+  background: rgba(214, 43, 69, 0.1) !important;
+  color: #e8897a !important;
   padding: 2px 6px;
+  border: 1px solid var(--j-border-soft);
 }
 
 pre code {
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.87) !important;
+  color: var(--j-text) !important;
   padding: 0;
+  border: none;
 }
 
 .highlight .gutter {
-  background: var(--code-bg) !important;
-  border-right: 1px solid var(--border) !important;
-  color: var(--meta) !important;
+  background: var(--j-code-bg) !important;
+  border-right: 1px solid var(--j-border) !important;
+  color: var(--j-meta) !important;
 }
 
 .highlight .code-lang {
-  color: var(--accent) !important;
-  font-family: var(--font-mono) !important;
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.7rem !important;
+  color: var(--j-accent) !important;
   font-style: normal !important;
-  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-/* Highlight.js tokens */
+/* Syntax tokens */
 .hljs-keyword,
-.hljs-selector-tag,
-.hljs-built_in { color: var(--accent) !important; }
+.hljs-selector-tag  { color: #d62b45 !important; }
 .hljs-string,
-.hljs-attr     { color: #ff8a80 !important; }
-.hljs-comment  { color: var(--meta) !important; }
-.hljs-number   { color: #ffb74d !important; }
-.hljs-function { color: #80cbc4 !important; }
+.hljs-attr          { color: #e8897a !important; }
+.hljs-comment       { color: var(--j-meta) !important; font-style: italic; }
+.hljs-number        { color: #e8b57a !important; }
+.hljs-function,
+.hljs-title         { color: #a8c7a8 !important; }
+.hljs-built_in      { color: #7abfe8 !important; }
 
-/* ----------------------------------------------------------------
-   Sidebar / Aside — card surfaces
-   ---------------------------------------------------------------- */
+/* ================================================================
+   14. SIDEBAR / ASIDE
+   ================================================================ */
 #aside-content .card-widget {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
+  background: var(--j-surface) !important;
+  border: 1px solid var(--j-border) !important;
   box-shadow: none !important;
-  transition: box-shadow var(--transition), border-color var(--transition) !important;
+  transition: box-shadow var(--j-ease), border-color var(--j-ease) !important;
 }
 
 #aside-content .card-widget:hover {
-  box-shadow: var(--glow) !important;
-  border-color: var(--accent-dark) !important;
+  box-shadow: var(--j-accent-glow) !important;
+  border-color: rgba(214, 43, 69, 0.35) !important;
 }
 
 .card-widget .item-headline i {
-  color: var(--accent) !important;
+  color: var(--j-accent) !important;
 }
 
 .card-widget .item-headline p {
-  font-family: var(--font-heading) !important;
+  font-family: var(--j-font-display) !important;
   font-style: italic !important;
   font-weight: 700 !important;
-  color: var(--text) !important;
+  font-size: 0.85rem !important;
+  color: var(--j-text-2) !important;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
 }
 
 /* Author card */
 .card-author .author-name {
-  font-family: var(--font-heading) !important;
+  font-family: var(--j-font-display) !important;
   font-style: italic !important;
   font-weight: 900 !important;
-  color: var(--text) !important;
+  font-size: 1.4rem !important;
+  color: var(--j-text) !important;
+  letter-spacing: -0.02em;
 }
 
 .card-author .author-description {
-  color: var(--meta) !important;
+  font-size: 0.82rem !important;
+  color: var(--j-text-2) !important;
+  line-height: 1.6;
 }
 
-.card-author .author-avatar img {
-  border: 2px solid var(--accent) !important;
-  filter: grayscale(15%) contrast(1.1);
+/* Avatar — no spin, subtle crimson ring */
+.card-author .author-avatar img,
+.avatar-img {
+  border: 1px solid var(--j-border) !important;
+  filter: grayscale(20%) contrast(1.05) !important;
+  animation: none !important;
+  transform: none !important;
+  transition: filter var(--j-ease), border-color var(--j-ease) !important;
 }
 
-/* Tags cloud */
+.card-author .author-avatar:hover img,
+.avatar-img:hover {
+  border-color: var(--j-accent) !important;
+  filter: grayscale(0%) contrast(1.1) !important;
+}
+
+/* Social icons */
+.card-author .author-social a {
+  color: var(--j-meta) !important;
+  transition: color var(--j-ease) !important;
+}
+
+.card-author .author-social a:hover {
+  color: var(--j-accent) !important;
+}
+
+/* Author button */
+.card-author .author-button-info .btn {
+  background: transparent !important;
+  border: 1px solid var(--j-border) !important;
+  color: var(--j-text-2) !important;
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.04em;
+  transition: all var(--j-ease) !important;
+}
+
+.card-author .author-button-info .btn:hover {
+  border-color: var(--j-accent) !important;
+  color: var(--j-text) !important;
+}
+
+/* Tag cloud */
 .tag-cloud-tags a {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--meta) !important;
-  font-family: var(--font-heading) !important;
-  font-style: italic !important;
-  transition: all var(--transition) !important;
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.75rem !important;
+  background: var(--j-bg-elevated) !important;
+  border: 1px solid var(--j-border) !important;
+  color: var(--j-meta) !important;
+  letter-spacing: 0.02em;
+  padding: 3px 10px !important;
+  transition: all var(--j-ease) !important;
 }
 
 .tag-cloud-tags a:hover {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: var(--text) !important;
+  background: var(--j-accent-dim) !important;
+  border-color: var(--j-accent) !important;
+  color: var(--j-text) !important;
 }
 
 /* Category list */
 .category-list-item a {
-  color: var(--meta) !important;
-  transition: color var(--transition);
+  color: var(--j-text-2) !important;
+  font-size: 0.88rem !important;
+  transition: color var(--j-ease) !important;
 }
 
 .category-list-item a:hover {
-  color: var(--accent) !important;
+  color: var(--j-text) !important;
 }
 
-/* ----------------------------------------------------------------
-   Buttons / CTAs — editorial outlined style
-   ---------------------------------------------------------------- */
+/* Recent post list in sidebar */
+.aside-list-item .thumbnail {
+  border: 1px solid var(--j-border) !important;
+}
+
+.aside-list-item .title a {
+  color: var(--j-text-2) !important;
+  font-size: 0.85rem !important;
+  font-family: var(--j-font-body) !important;
+  transition: color var(--j-ease) !important;
+}
+
+.aside-list-item .title a:hover {
+  color: var(--j-text) !important;
+}
+
+.aside-list-item .time {
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.7rem !important;
+  color: var(--j-meta) !important;
+}
+
+/* ================================================================
+   15. BUTTONS / CTAs
+   ================================================================ */
 .btn-beautify,
-.more-btn,
-a.btn,
-.btn {
+.more-btn {
   background: transparent !important;
-  border: 1px solid var(--accent) !important;
-  color: var(--accent) !important;
-  font-family: var(--font-heading) !important;
-  font-style: italic !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.05em;
+  border: 1px solid var(--j-border) !important;
+  color: var(--j-text-2) !important;
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   box-shadow: none !important;
-  transition: all var(--transition) !important;
+  transition: all var(--j-ease) !important;
 }
 
 .btn-beautify:hover,
-.more-btn:hover,
-a.btn:hover,
-.btn:hover {
-  background: var(--accent) !important;
-  color: var(--text) !important;
+.more-btn:hover {
+  border-color: var(--j-accent) !important;
+  color: var(--j-text) !important;
 }
 
+/* Arrow motif */
 .btn-beautify::before,
 .more-btn::before {
   content: '→ ';
   font-style: normal;
+  color: var(--j-accent);
 }
 
-/* ----------------------------------------------------------------
-   Blockquote
-   ---------------------------------------------------------------- */
+/* ================================================================
+   16. BLOCKQUOTE
+   ================================================================ */
 #article-container blockquote {
-  border-left: 3px solid var(--accent) !important;
-  background: rgba(196, 30, 58, 0.06) !important;
-  color: var(--meta) !important;
-  padding: 12px 16px;
+  border-left: 2px solid var(--j-accent) !important;
+  background: var(--j-accent-dim) !important;
+  color: var(--j-text-2) !important;
+  padding: 1rem 1.2rem;
   font-style: italic;
+  margin: 1.5rem 0;
 }
 
-/* ----------------------------------------------------------------
-   Post Copyright
-   ---------------------------------------------------------------- */
-.post-copyright {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  border-left: 3px solid var(--accent) !important;
-}
-
-.post-copyright .copyright-info-title {
-  color: var(--meta) !important;
-}
-
-/* ----------------------------------------------------------------
-   Pagination
-   ---------------------------------------------------------------- */
+/* ================================================================
+   17. PAGINATION
+   ================================================================ */
 .pagination .page-number,
 .pagination .extend {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--meta) !important;
-  transition: all var(--transition) !important;
+  background: var(--j-surface) !important;
+  border: 1px solid var(--j-border) !important;
+  color: var(--j-meta) !important;
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.8rem !important;
+  transition: all var(--j-ease) !important;
 }
 
 .pagination .current {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: var(--text) !important;
+  background: var(--j-accent) !important;
+  border-color: var(--j-accent) !important;
+  color: #fff !important;
 }
 
 .pagination .page-number:hover,
 .pagination .extend:hover {
-  border-color: var(--accent) !important;
-  color: var(--accent) !important;
+  border-color: var(--j-accent) !important;
+  color: var(--j-text) !important;
 }
 
-/* ----------------------------------------------------------------
-   TOC
-   ---------------------------------------------------------------- */
+/* ================================================================
+   18. TOC
+   ================================================================ */
 #toc-div .toc-item a,
 #toc-div a {
-  color: var(--meta) !important;
-  transition: color var(--transition) !important;
+  font-size: 0.82rem !important;
+  color: var(--j-meta) !important;
+  font-family: var(--j-font-body) !important;
+  transition: color var(--j-ease) !important;
 }
 
 #toc-div .toc-item.active > a,
 #toc-div a:hover {
-  color: var(--accent) !important;
+  color: var(--j-accent) !important;
 }
 
-#toc-div .toc-item.active::before {
-  background: var(--accent) !important;
-}
-
-/* ----------------------------------------------------------------
-   Footer
-   ---------------------------------------------------------------- */
+/* ================================================================
+   19. FOOTER
+   ================================================================ */
 #footer {
-  background: var(--bg) !important;
-  border-top: 1px solid var(--border) !important;
-  color: var(--meta) !important;
+  background: var(--j-bg) !important;
+  border-top: 1px solid var(--j-border) !important;
+  color: var(--j-meta) !important;
 }
 
-#footer a {
-  color: var(--meta) !important;
-  transition: color var(--transition);
+#footer a,
+#footer .footer_custom_text {
+  color: var(--j-meta) !important;
+  font-size: 0.82rem !important;
+  transition: color var(--j-ease) !important;
 }
 
 #footer a:hover {
-  color: var(--accent) !important;
+  color: var(--j-accent) !important;
 }
 
-#footer .footer_custom_text {
-  color: var(--meta) !important;
-}
-
-/* ----------------------------------------------------------------
-   Search Dialog
-   ---------------------------------------------------------------- */
+/* ================================================================
+   20. SEARCH
+   ================================================================ */
 #local-search .search-dialog {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
+  background: var(--j-surface) !important;
+  border: 1px solid var(--j-border) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
 }
 
 #local-search .search-input-wrap input {
-  background: var(--bg) !important;
-  color: var(--text) !important;
-  border-bottom: 1px solid var(--border) !important;
+  background: transparent !important;
+  color: var(--j-text) !important;
+  font-family: var(--j-font-mono) !important;
+  border-bottom: 1px solid var(--j-border) !important;
 }
 
 #local-search .search-result-list .search-result-title {
-  color: var(--accent) !important;
-  font-family: var(--font-heading) !important;
+  font-family: var(--j-font-display) !important;
   font-style: italic !important;
+  font-weight: 700 !important;
+  color: var(--j-text) !important;
 }
 
-/* ----------------------------------------------------------------
-   Archive / Tag / Category pages
-   ---------------------------------------------------------------- */
+/* ================================================================
+   21. POST COPYRIGHT
+   ================================================================ */
+.post-copyright {
+  background: var(--j-surface) !important;
+  border: 1px solid var(--j-border) !important;
+  border-left: 2px solid var(--j-accent) !important;
+}
+
+.post-copyright a {
+  color: var(--j-text-2) !important;
+}
+
+/* ================================================================
+   22. ARCHIVE / TAGS / CATEGORIES
+   ================================================================ */
+.archive-year {
+  font-family: var(--j-font-display) !important;
+  font-style: italic !important;
+  font-weight: 900 !important;
+  color: var(--j-accent) !important;
+  letter-spacing: -0.02em;
+}
+
 .archive-list-item a,
 .tag-list-item a {
-  color: var(--meta) !important;
-  transition: color var(--transition);
+  color: var(--j-text-2) !important;
+  font-family: var(--j-font-body) !important;
+  transition: color var(--j-ease) !important;
 }
 
 .archive-list-item a:hover,
 .tag-list-item a:hover {
-  color: var(--accent) !important;
+  color: var(--j-text) !important;
 }
 
-.archive-year {
-  color: var(--accent) !important;
-  font-family: var(--font-heading) !important;
-  font-style: italic !important;
-  font-weight: 900 !important;
+.archive-list-item .time,
+.archive-list-item time {
+  font-family: var(--j-font-mono) !important;
+  font-size: 0.75rem !important;
+  color: var(--j-meta) !important;
 }
 
-/* ----------------------------------------------------------------
-   Mobile
-   ---------------------------------------------------------------- */
+/* ================================================================
+   23. HR + DIVIDERS
+   ================================================================ */
+hr {
+  border: none !important;
+  border-top: 1px solid var(--j-border) !important;
+  margin: 2rem 0 !important;
+}
+
+/* ================================================================
+   24. SELECTION
+   ================================================================ */
+::selection {
+  background: rgba(214, 43, 69, 0.28);
+  color: var(--j-text);
+}
+
+/* ================================================================
+   25. MOBILE
+   ================================================================ */
 @media (max-width: 768px) {
   #page-header .site-title {
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
   }
 
   #nav .site-name {
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
   }
 
-  .recent-post-item {
+  #aside-content .card-widget {
     margin-bottom: 1rem !important;
   }
 }
