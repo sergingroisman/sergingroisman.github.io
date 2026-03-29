@@ -27,7 +27,7 @@ menu:
 # ---------------------------------------------------------------
 # Banner / Capa
 # ---------------------------------------------------------------
-index_img: 'https://w.wallhaven.cc/full/57/wallhaven-57l235.png'
+index_img: false
 default_top_img: false
 archive_img:
 tag_img:
