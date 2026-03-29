@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre mim — Sérgio Santos</title>
+  <meta name="description" content="Senior Software Engineer · 7 anos construindo sistemas que não caem · Avanade" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ================================================================
+       JUNKIE EDITORIAL — About
+       Palette: Linear precision × underground editorial × dark anime
+       ================================================================ */
+
+    :root {
+      --bg:          #0d0d0d;
+      --bg-up:       #111111;
+      --surface:     #161616;
+      --surface-2:   #1e1e1e;
+      --border:      #272727;
+      --border-soft: #1e1e1e;
+      --text:        #eceae7;
+      --text-2:      #a3a09c;
+      --meta:        #5e5b57;
+      --accent:      #d62b45;
+      --accent-dim:  rgba(214, 43, 69, 0.12);
+      --accent-glow: 0 0 20px rgba(214, 43, 69, 0.18);
+      --font-d:      'Space Grotesk', sans-serif;
+      --font-mono:   'JetBrains Mono', 'Courier New', monospace;
+      --font-body:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ease:        0.22s ease;
+      --max-w:       860px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--bg-up);
+    }
+
+    ::-webkit-scrollbar       { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-up); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Film grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      mix-blend-mode: screen;
+    }
+
+    ::selection {
+      background: rgba(214, 43, 69, 0.28);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    a {
+      color: var(--text-2);
+      text-decoration: none;
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-size: 0% 1px;
+      background-repeat: no-repeat;
+      background-position: left bottom;
+      transition: background-size 0.32s ease, color var(--ease);
+    }
+
+    a:hover {
+      background-size: 100% 1px;
+      color: var(--text);
+    }
+
+    .label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+
+    .label::before { content: '// '; opacity: 0.6; }
+
+    .section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    /* ================================================================
+       TOPBAR
+       ================================================================ */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 13, 13, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: 52px;
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .topbar-logo {
+      font-family: var(--font-d);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      background: none;
+    }
+
+    .topbar-logo:hover {
+      color: var(--text);
+      background-size: 0%;
+    }
+
+    .topbar-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .topbar-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--meta);
+      background: none;
+      transition: color var(--ease);
+    }
+
+    .topbar-nav a:hover { color: var(--text); background-size: 0%; }
+    .topbar-nav a.active { color: var(--text-2); }
+
+    /* ================================================================
+       HEADER
+       ================================================================ */
+    #header {
+      position: relative;
+      padding-top: 52px;
+      min-height: 38vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 4rem;
+      overflow: hidden;
+      background-color: #090909;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    #header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(214, 43, 69, 0.04), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-eyebrow {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .header-title {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-shadow: 2px 4px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    /* ================================================================
+       BIO
+       ================================================================ */
+    .bio { max-width: 620px; }
+
+    .bio p {
+      font-size: clamp(1rem, 2vw, 1.08rem);
+      line-height: 1.8;
+      color: var(--text-2);
+      margin-bottom: 1.1em;
+    }
+
+    .bio p:last-child { margin-bottom: 0; }
+    .bio strong { color: var(--text); font-weight: 600; }
+    .bio em     { color: var(--text); font-style: italic; }
+
+    /* ================================================================
+       STACK
+       ================================================================ */
+    .stack-groups {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .stack-group {}
+
+    .stack-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--meta);
+      margin-bottom: 0.65rem;
+      display: block;
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .skill {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.32rem 0.8rem;
+      background: var(--bg-up);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      letter-spacing: 0.04em;
+      cursor: default;
+      transition: all var(--ease);
+    }
+
+    .skill:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-dim);
+    }
+
+    .skill.primary {
+      border-color: var(--border);
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .skill.primary:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ================================================================
+       TRAJECTORY — timeline
+       ================================================================ */
+    .timeline { position: relative; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 2.5rem;
+      padding-bottom: 3.2rem;
+      position: relative;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 120px;
+      top: 0.6rem;
+      bottom: -3.2rem;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item:last-child::after { display: none; }
+
+    .tl-year {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.06em;
+      color: var(--meta);
+      text-align: right;
+      padding-top: 0.15rem;
+      line-height: 1.5;
+    }
+
+    .tl-body { position: relative; }
+
+    .tl-body::before {
+      content: '';
+      position: absolute;
+      left: -2.56rem;
+      top: 0.55rem;
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+    }
+
+    .tl-company {
+      font-family: var(--font-d);
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-role {
+      font-size: 0.8rem;
+      color: var(--text-2);
+      margin-bottom: 0.6rem;
+    }
+
+    .tl-desc {
+      font-size: 0.86rem;
+      color: var(--meta);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    /* ================================================================
+       CONTACT
+       ================================================================ */
+    #contact .links { display: flex; gap: 2rem; flex-wrap: wrap; }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-d);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--text-2);
+      background: none;
+      transition: color var(--ease);
+    }
+
+    .contact-link::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.85em;
+      transition: transform var(--ease);
+    }
+
+    .contact-link:hover { color: var(--text); background-size: 0%; }
+    .contact-link:hover::before { transform: translateX(4px); }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    #page-footer { padding: 2.5rem 0; }
+
+    #page-footer p {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--meta);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    #page-footer span { color: var(--accent); }
+
+    #page-footer a {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--meta);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      transition: color var(--ease);
+    }
+
+    #page-footer a:hover { color: var(--text-2); background-size: 0%; }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 700px) {
+      .container   { padding: 0 1.25rem; }
+      .section     { padding: 3.5rem 0; }
+      #header      { padding-bottom: 2.5rem; min-height: 28vh; }
+
+      .topbar-nav  { gap: 1.2rem; }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+      }
+
+      .timeline-item::after { display: none; }
+      .tl-body::before      { display: none; }
+      .tl-year              { text-align: left; }
+
+      #contact .links { flex-direction: column; gap: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .topbar-nav li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+    }
+
+    /* ================================================================
+       CURSOR DOT
+       ================================================================ */
+    #cursor-dot {
+      position: fixed;
+      top: 0; left: 0;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease, opacity 0.3s ease, width 0.2s ease, height 0.2s ease;
+      opacity: 0;
+    }
+
+    body:has(a:hover) #cursor-dot,
+    body:has(button:hover) #cursor-dot {
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: 1px solid var(--accent);
+      opacity: 0.6;
+    }
+
+    /* ================================================================
+       SCROLL REVEAL
+       ================================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      #cursor-dot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="topbar-logo" href="/">Sérgio Santos</a>
+      <nav>
+        <ul class="topbar-nav">
+          <li><a href="/">Blog</a></li>
+          <li><a href="/portfolio/">Portfolio</a></li>
+          <li><a href="/brag/">Brag</a></li>
+          <li><a href="/about/" class="active">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HEADER -->
+  <section id="header">
+    <div class="container header-inner">
+      <span class="header-eyebrow">Senior Software Engineer · Avanade · 7 anos</span>
+      <h1 class="header-title">Sobre<br>mim</h1>
+    </div>
+  </section>
+
+  <!-- BIO -->
+  <section id="bio" class="section">
+    <div class="container">
+      <span class="label">Quem sou</span>
+      <div class="bio">
+        <p>
+          Sou engenheiro sênior na <strong>Avanade</strong>. Construo sistemas distribuídos
+          que escalam de verdade — APIs, microsserviços, pipelines, infraestrutura.
+          <strong>Node.js e Golang</strong> são minha língua nativa. AWS é onde moro.
+        </p>
+        <p>
+          Sete anos de código, bugs às 3h da manhã, deploys que deram certo e alguns
+          que não deram. Aprendi que documentação e café são igualmente essenciais.
+          Não tenho paciência pra slide deck corporativo.
+        </p>
+        <p>
+          Quando não estou no terminal, estou debatendo se <em>Angel's Egg</em>
+          é o anime mais incompreendido da história, jogando no Switch ou
+          tomando café demais.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack" class="section">
+    <div class="container">
+      <span class="label">Stack</span>
+      <div class="stack-groups">
+
+        <div class="stack-group">
+          <span class="stack-group-label">Backend</span>
+          <div class="skills-wrap">
+            <span class="skill primary">Node.js</span>
+            <span class="skill primary">Golang</span>
+            <span class="skill primary">Microserviços</span>
+            <span class="skill">TypeScript</span>
+            <span class="skill">REST APIs</span>
+            <span class="skill">GraphQL</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <span class="stack-group-label">Frontend</span>
+          <div class="skills-wrap">
+            <span class="skill primary">React Native</span>
+            <span class="skill primary">Next.js</span>
+            <span class="skill">React.js</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <span class="stack-group-label">Cloud & Infra</span>
+          <div class="skills-wrap">
+            <span class="skill primary">AWS</span>
+            <span class="skill">Lambda</span>
+            <span class="skill">ECS</span>
+            <span class="skill">S3</span>
+            <span class="skill">SQS</span>
+            <span class="skill">Docker</span>
+            <span class="skill">Kubernetes</span>
+            <span class="skill">CI/CD</span>
+            <span class="skill">GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <span class="stack-group-label">Databases</span>
+          <div class="skills-wrap">
+            <span class="skill primary">PostgreSQL</span>
+            <span class="skill primary">MongoDB</span>
+            <span class="skill">Redis</span>
+            <span class="skill">DynamoDB</span>
+            <span class="skill">RDS</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAJETÓRIA -->
+  <section id="trajectory" class="section">
+    <div class="container">
+      <span class="label">Trajetória</span>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="tl-year">Mar/2021<br>presente</div>
+          <div class="tl-body">
+            <div class="tl-company">Avanade</div>
+            <div class="tl-role">Senior Software Engineer</div>
+            <p class="tl-desc">
+              Arquitetura e desenvolvimento de soluções enterprise.
+              Microsserviços em Node.js e Golang, integração com Azure,
+              liderança técnica em squads ágeis.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-year">Ago/2019<br>Mar/2021</div>
+          <div class="tl-body">
+            <div class="tl-company">Avanade</div>
+            <div class="tl-role">Software Engineer</div>
+            <p class="tl-desc">
+              Desenvolvimento de plataformas e integrações para clientes
+              enterprise Microsoft. Crescimento técnico em sistemas distribuídos.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-year">Jan/2019<br>Jul/2019</div>
+          <div class="tl-body">
+            <div class="tl-company">Agile Solutions</div>
+            <div class="tl-role">Desenvolvedor Jr</div>
+            <p class="tl-desc">
+              Desenvolvimento web e APIs. Primeiro contato com ambiente
+              de produto em escala real.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-year">Out/2018<br>Fev/2019</div>
+          <div class="tl-body">
+            <div class="tl-company">SENAI ISI</div>
+            <div class="tl-role">Engenheiro de Software</div>
+            <p class="tl-desc">
+              Projetos de inovação e automação industrial.
+              Transição de estagiário para engenheiro.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-year">Set/2016<br>Ago/2018</div>
+          <div class="tl-body">
+            <div class="tl-company">SENAI ISI</div>
+            <div class="tl-role">Estagiário</div>
+            <p class="tl-desc">
+              Início da carreira. Automação, scripts, primeiras
+              linhas de código que foram pra produção.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <span class="label">Contato</span>
+      <div class="links">
+        <a class="contact-link"
+           href="https://github.com/sergingroisman"
+           target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="contact-link"
+           href="https://linkedin.com/in/sergin-groisman"
+           target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="page-footer">
+    <div class="container">
+      <p>
+        <a href="/">← voltar ao blog</a>
+        &nbsp;·&nbsp;
+        <span>☕</span> &nbsp;·&nbsp;
+        anime underground &nbsp;·&nbsp; muito café
+      </p>
+    </div>
+  </footer>
+
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <script>
+    // ── Cursor dot ─────────────────────────────────────────────────
+    (function () {
+      var dot = document.getElementById('cursor-dot');
+      var raf;
+      document.addEventListener('mousemove', function (e) {
+        dot.style.opacity = '1';
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          dot.style.left = e.clientX + 'px';
+          dot.style.top  = e.clientY + 'px';
+        });
+      });
+      document.addEventListener('mouseleave', function () {
+        dot.style.opacity = '0';
+      });
+    })();
+
+    // ── Scroll reveal ──────────────────────────────────────────────
+    (function () {
+      var els = document.querySelectorAll(
+        '.section, .timeline-item, .skill, .stack-group'
+      );
+      els.forEach(function (el) { el.classList.add('reveal'); });
+
+      document.querySelectorAll('.timeline-item').forEach(function (el, i) {
+        el.classList.add('reveal-delay-' + Math.min((i % 4) + 1, 4));
+      });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
