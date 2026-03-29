@@ -239,3 +239,10 @@ google_adsense:
   js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
   client: # ca-pub-XXXXXXXXXX
   enable_page_level_ads: true
+
+# ---------------------------------------------------------------
+# Custom CSS override — JUNKIE editorial theme
+# ---------------------------------------------------------------
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/custom.css">
