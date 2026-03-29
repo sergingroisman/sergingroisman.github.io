@@ -43,7 +43,14 @@
 /* ================================================================
    2. BUTTERFLY CSS-VAR OVERRIDE — dark theme layer
       This is the authoritative layer — fixes things at the source.
+      :root block prevents FOUC before JS sets data-theme.
    ================================================================ */
+:root {
+  --card-bg:          var(--j-surface);
+  --global-bg:        var(--j-bg);
+  --font-color:       var(--j-text);
+}
+
 [data-theme='dark'] {
   --global-bg:        var(--j-bg);
   --font-color:       var(--j-text);
@@ -173,21 +180,46 @@ h1, h2, h3 {
 
 /* ================================================================
    7. GLOBAL SURFACES — all layout wrappers forced dark
+      Covers: home, archive, tags, categories, post, page types.
+      Uses j-surface for content cards (elevation above body bg).
    ================================================================ */
+
+/* Body & structural shells */
 #main,
 #body-wrap,
 .layout,
-.layout-wrapper,
-.content-inner,
+.layout-wrapper {
+  background-color: var(--j-bg) !important;
+  color: var(--j-text) !important;
+}
+
+/* Main content card — the cardHover wrapper Butterfly injects */
+.layout > div:first-child,
+#page,
+.page {
+  background-color: var(--j-surface) !important;
+  color: var(--j-text) !important;
+}
+
+/* Article/post internals */
 .post-content,
 .article-container,
+#article-container,
 article,
-.page,
-#page,
-.layout > div:first-child,
 .card-post-container,
 #post {
-  background-color: var(--j-bg) !important;
+  background-color: transparent !important;
+  color: var(--j-text) !important;
+}
+
+/* Archive, tags, categories page containers */
+#archive,
+#tag,
+.tag-wrap,
+#category,
+.category-wrap,
+.index-wrap {
+  background-color: transparent !important;
   color: var(--j-text) !important;
 }
 
@@ -483,19 +515,31 @@ pre code {
   line-height: 1.6;
 }
 
-/* Avatar — no spin, subtle crimson ring */
-.card-author .author-avatar img,
+/* Avatar — circular, crimson ring on hover
+   Override the global border-radius: 0 reset for this specific element. */
 .avatar-img {
-  border: 1px solid var(--j-border) !important;
-  filter: grayscale(20%) contrast(1.05) !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 2px solid var(--j-border) !important;
+  transition: border-color var(--j-ease), box-shadow var(--j-ease) !important;
   animation: none !important;
-  transform: none !important;
-  transition: filter var(--j-ease), border-color var(--j-ease) !important;
 }
 
-.card-author .author-avatar:hover img,
 .avatar-img:hover {
   border-color: var(--j-accent) !important;
+  box-shadow: 0 0 0 4px var(--j-accent-dim) !important;
+}
+
+.avatar-img img {
+  border-radius: 0 !important;
+  border: none !important;
+  filter: grayscale(15%) contrast(1.05) !important;
+  animation: none !important;
+  transform: none !important;
+  transition: filter var(--j-ease) !important;
+}
+
+.avatar-img:hover img {
   filter: grayscale(0%) contrast(1.1) !important;
 }
 
