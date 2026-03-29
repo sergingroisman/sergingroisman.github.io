@@ -183,6 +183,8 @@ h1, h2, h3 {
 .article-container,
 article,
 .page,
+#page,
+.layout > div:first-child,
 .card-post-container,
 #post {
   background-color: var(--j-bg) !important;
