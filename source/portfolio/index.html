@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sérgio Santos — Senior Software Engineer</title>
+  <meta name="description" content="Senior Software Engineer · Node.js, Golang, AWS, React Native, Next.js · Avanade" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+  <style>
+    /* ================================================================
+       JUNKIE EDITORIAL — Portfolio
+       Sérgio Santos · Senior Software Engineer
+       ================================================================ */
+
+    :root {
+      --bg:           #0d0d0d;
+      --surface:      #111111;
+      --border:       #1e1e1e;
+      --accent:       #c41e3a;
+      --accent-dark:  #8b0000;
+      --text:         #ffffff;
+      --meta:         #888888;
+      --font:         'Barlow Condensed', sans-serif;
+      --font-mono:    'Courier New', monospace;
+      --transition:   0.28s ease;
+      --glow:         0 0 12px rgba(196, 30, 58, 0.3);
+      --max-w:        900px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) #1a1a1a;
+    }
+
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: var(--accent); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Film grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.09;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px 180px;
+      mix-blend-mode: overlay;
+    }
+
+    .section-label {
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-style: normal;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .section-label::before {
+      content: '// ';
+      font-weight: 900;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-size: 0% 1px;
+      background-repeat: no-repeat;
+      background-position: left bottom;
+      transition: background-size 0.35s ease, color var(--transition);
+    }
+
+    a:hover {
+      background-size: 100% 1px;
+      color: var(--accent);
+    }
+
+    /* ================================================================
+       HERO
+       ================================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 5rem;
+      overflow: hidden;
+      background-color: #080808;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px 180px;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(196, 30, 58, 0.05), transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 900;
+      font-style: italic;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-shadow: 0 0 120px rgba(196, 30, 58, 0.35);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-role {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--meta);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-role span { color: var(--accent); }
+
+    .hero-arrow {
+      display: inline-block;
+      font-size: 1.4rem;
+      color: var(--accent);
+      animation: bounce 2s ease-in-out infinite;
+      background: none;
+    }
+
+    .hero-arrow:hover { background-size: 0%; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(10px); }
+    }
+
+    /* ================================================================
+       SECTIONS
+       ================================================================ */
+    .section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ================================================================
+       ABOUT
+       ================================================================ */
+    #about .bio {
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 680px;
+    }
+
+    #about .bio strong {
+      color: var(--text);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    #about .bio .accent {
+      color: var(--accent);
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    /* ================================================================
+       SKILLS
+       ================================================================ */
+    .skills-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .skills-group-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--meta);
+      margin-bottom: 0.6rem;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-badge {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 0.4rem 0.9rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--meta);
+      letter-spacing: 0.04em;
+      transition: all var(--transition);
+      cursor: default;
+    }
+
+    .skill-badge:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      box-shadow: var(--glow);
+    }
+
+    .skill-badge.primary {
+      border-color: var(--accent-dark);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ================================================================
+       EXPERIENCE
+       ================================================================ */
+    .company-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .company-period {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .company-name {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .company-role {
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--meta);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2.8rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      transform: translateX(-3px);
+    }
+
+    .timeline-period {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--meta);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-project {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .timeline-desc {
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .stack-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--meta);
+      letter-spacing: 0.04em;
+    }
+
+    /* ================================================================
+       INTERESTS
+       ================================================================ */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+
+    .interest-card {
+      background: var(--surface);
+      padding: 1.4rem 1.2rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    .interest-card:hover {
+      background: #181818;
+      box-shadow: inset 0 0 0 1px var(--accent-dark);
+    }
+
+    .interest-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .interest-name {
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .interest-detail {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--meta);
+    }
+
+    /* ================================================================
+       CONTACT
+       ================================================================ */
+    #contact .contact-links {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      background: none;
+      transition: color var(--transition);
+    }
+
+    .contact-link::before {
+      content: '→';
+      color: var(--accent);
+      font-style: normal;
+      transition: transform var(--transition);
+    }
+
+    .contact-link:hover {
+      background-size: 0%;
+      color: var(--accent);
+    }
+
+    .contact-link:hover::before { transform: translateX(4px); }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    #footer-local {
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    #footer-local p {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--meta);
+      letter-spacing: 0.06em;
+    }
+
+    #footer-local span { color: var(--accent); }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 768px) {
+      .container { padding: 0 1.25rem; }
+      .section { padding: 3.5rem 0; }
+      #hero { min-height: 90vh; padding-bottom: 3.5rem; }
+      .interests-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-link { font-size: 1.2rem; }
+      .timeline { padding-left: 1.5rem; }
+      .timeline-item::before { left: -1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .interests-grid { grid-template-columns: 1fr 1fr; }
+      #contact .contact-links { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container hero-content">
+      <p class="hero-meta">Senior Software Engineer · Avanade · Recife, Brasil</p>
+      <h1 class="hero-name">Sérgio<br>Santos</h1>
+      <p class="hero-role">
+        Node.js · Golang · AWS · <span>NestJS</span> · Next.js · React Native
+      </p>
+      <a class="hero-arrow" href="#about" aria-label="Scroll para sobre">↓</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <p class="section-label">Sobre</p>
+      <p class="bio">
+        Engenheiro sênior na <strong>Avanade</strong> há mais de
+        <span class="accent">7 anos</span>, construindo sistemas distribuídos que
+        aguentam produção de verdade. Node.js e Golang são minha língua nativa.
+        AWS é onde moro. NestJS, Next.js e React Native quando o projeto pede.<br><br>
+        Não tenho paciência pra slide deck corporativo. Prefiro código, café às 3h
+        e discutir se <em>Angel's Egg</em> foi ou não o anime mais incompreendido da história.
+        Gosto de problemas difíceis, arquitetura que escala de verdade e de
+        sistemas que sobrevivem ao primeiro contato com produção.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="container">
+      <p class="section-label">Stack</p>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Especialidade — uso em produção, mentoro outros</p>
+        <div class="skills-grid">
+          <span class="skill-badge primary">Node.js</span>
+          <span class="skill-badge primary">NestJS</span>
+          <span class="skill-badge primary">Next.js</span>
+          <span class="skill-badge primary">TypeScript</span>
+          <span class="skill-badge primary">React Native</span>
+          <span class="skill-badge primary">React</span>
+          <span class="skill-badge primary">AWS</span>
+          <span class="skill-badge primary">Docker</span>
+          <span class="skill-badge primary">GitHub Actions</span>
+          <span class="skill-badge primary">DDD</span>
+          <span class="skill-badge primary">Arquitetura Hexagonal</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Proficiente — projetos reais</p>
+        <div class="skills-grid">
+          <span class="skill-badge">Golang</span>
+          <span class="skill-badge">RabbitMQ</span>
+          <span class="skill-badge">Keycloak</span>
+          <span class="skill-badge">Kubernetes</span>
+          <span class="skill-badge">ArgoCD</span>
+          <span class="skill-badge">Grafana</span>
+          <span class="skill-badge">AWS Lambda</span>
+          <span class="skill-badge">AWS Amplify</span>
+          <span class="skill-badge">S3</span>
+          <span class="skill-badge">Serverless Framework</span>
+          <span class="skill-badge">TDD</span>
+        </div>
+      </div>
+
+      <div class="skills-group">
+        <p class="skills-group-label">Conhecimento</p>
+        <div class="skills-grid">
+          <span class="skill-badge">LangChain</span>
+          <span class="skill-badge">OpenAI API</span>
+          <span class="skill-badge">RAG</span>
+          <span class="skill-badge">ElasticBeanstalk</span>
+          <span class="skill-badge">LocalStack</span>
+          <span class="skill-badge">Figma MCP</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <p class="section-label">Experiência</p>
+
+      <div class="company-header">
+        <p class="company-period">2019 → presente</p>
+        <h2 class="company-name">Avanade</h2>
+        <p class="company-role">Senior Software Engineer · Consulting</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <p class="timeline-period">2023 → presente · Líder de Entrega Interino</p>
+          <h3 class="timeline-project">Afya — Campaign &amp; Manutenção</h3>
+          <p class="timeline-desc">
+            Liderou 2 projetos simultaneamente: plataforma de campanhas publicitárias
+            (Google Ads + integrações) e base de dados nacional de médicos do Brasil.
+            Implementou Keycloak ponta a ponta, migrou infra de ElasticBeanstalk para
+            Kubernetes + ArgoCD + Grafana, liderou migração de Serverless para NestJS,
+            refatorou o frontend para Next.js 15 e entregou POC de chatbot com
+            GPT + LangChain + RAG — 1 semana antes do prazo.
+          </p>
+          <div class="timeline-stack">
+            <span class="stack-tag">NestJS</span>
+            <span class="stack-tag">Next.js 15</span>
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">Keycloak</span>
+            <span class="stack-tag">Kubernetes</span>
+            <span class="stack-tag">ArgoCD</span>
+            <span class="stack-tag">Grafana</span>
+            <span class="stack-tag">GitHub Actions</span>
+            <span class="stack-tag">AWS Lambda</span>
+            <span class="stack-tag">S3</span>
+            <span class="stack-tag">LangChain</span>
+            <span class="stack-tag">OpenAI</span>
+            <span class="stack-tag">RAG</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-period">2021 → 2022</p>
+          <h3 class="timeline-project">Afya — Integração OneSignal &amp; Google Ads</h3>
+          <p class="timeline-desc">
+            Desbloqueou integração crítica de notificações push (OneSignal + Next.js)
+            que o time anterior não havia conseguido concluir. Implementou arquitetura
+            de mensageria com RabbitMQ + Golang para processamento assíncrono. Manteve
+            métricas de click rate e performance no Google Ads do cliente.
+          </p>
+          <div class="timeline-stack">
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">Golang</span>
+            <span class="stack-tag">RabbitMQ</span>
+            <span class="stack-tag">Docker</span>
+            <span class="stack-tag">AWS LocalStack</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-period">2019 → 2021 · Missão presencial Rio de Janeiro</p>
+          <h3 class="timeline-project">YDUQS / Grupo Estácio</h3>
+          <p class="timeline-desc">
+            Entregou atualização crítica do app React Native em tempo recorde — base
+            reutilizada pelos times subsequentes por mais de 2 anos. Mentorou o time
+            de backend em JavaScript avançado. Manteve microsserviços com ~200k
+            acessos/mês no maior grupo de educação do Brasil (+700k alunos ativos).
+          </p>
+          <div class="timeline-stack">
+            <span class="stack-tag">React Native</span>
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">Microserviços</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section id="interests" class="section">
+    <div class="container">
+      <p class="section-label">Interesses</p>
+      <div class="interests-grid">
+
+        <div class="interest-card">
+          <span class="interest-icon">🎌</span>
+          <span class="interest-name">Anime</span>
+          <span class="interest-detail">Angel's Egg · Chainsaw Man · Vagabond · Fire Punch</span>
+        </div>
+
+        <div class="interest-card">
+          <span class="interest-icon">☕</span>
+          <span class="interest-name">Coffee</span>
+          <span class="interest-detail">Sem café não tem commit. É simples assim.</span>
+        </div>
+
+        <div class="interest-card">
+          <span class="interest-icon">⚔️</span>
+          <span class="interest-name">Star Wars</span>
+          <span class="interest-detail">Expanded Universe. A trilogia original. Fim.</span>
+        </div>
+
+        <div class="interest-card">
+          <span class="interest-icon">🎲</span>
+          <span class="interest-name">RPG</span>
+          <span class="interest-detail">D&amp;D, TTRPG, qualquer coisa com dado de 20 faces</span>
+        </div>
+
+        <div class="interest-card">
+          <span class="interest-icon">🎮</span>
+          <span class="interest-name">Switch</span>
+          <span class="interest-detail">Zelda, Metroid, N64 nostalgia em loop</span>
+        </div>
+
+        <div class="interest-card">
+          <span class="interest-icon">📖</span>
+          <span class="interest-name">Underground</span>
+          <span class="interest-detail">Zines, JUNKIE, editorial independente, cultura punk</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <p class="section-label">Contato</p>
+      <div class="contact-links">
+        <a class="contact-link" href="https://github.com/sergingroisman" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="contact-link" href="https://linkedin.com/in/sergin-groisman" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer-local">
+    <div class="container">
+      <p>Feito com <span>☕</span> · anime underground · e muito café</p>
+    </div>
+  </footer>
+
+</body>
+</html>
