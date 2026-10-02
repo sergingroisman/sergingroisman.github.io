@@ -4,478 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brag Document — Sérgio Santos</title>
-  <meta name="description" content="Registro de impacto técnico real — Senior Software Engineer @ Avanade" />
+  <meta name="description" content="Brag Document de Sérgio Santos — registro de impacto técnico real, com dados do Jira (projeto Campaign): 95 cards Done e 180,3h registradas." />
+  <meta name="author" content="Sérgio Luiz dos Santos Junior" />
+  <link rel="canonical" href="https://sergingroisman.github.io/brag/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Brag Document — Sérgio Santos" />
+  <meta property="og:description" content="Impacto mensurável, decisões técnicas e liderança real — dados reais do Jira." />
+  <meta property="og:url" content="https://sergingroisman.github.io/brag/" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <link rel="icon" href="/img/favicon.ico" />
   <link rel="stylesheet" href="/css/pages.css" />
-  <style>
-    /* ================================================================
-       BRAG — estilos específicos da página
-       ================================================================ */
+  <link rel="stylesheet" href="/css/hub.css" />
 
-    /* ================================================================
-       HERO
-       ================================================================ */
-    #hero {
-      position: relative;
-      padding-top: 52px;
-      min-height: 38vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 3.5rem;
-      overflow: hidden;
-      background-color: #090909;
-      border-bottom: 1px solid var(--border);
-    }
-
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 50%;
-      background: linear-gradient(to top, rgba(214, 43, 69, 0.04), transparent);
-      pointer-events: none;
-    }
-
-    .hero-inner { position: relative; z-index: 2; }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .hero-title {
-      font-family: var(--font-d);
-      font-size: clamp(3.5rem, 10vw, 7.5rem);
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 1.2rem;
-      text-shadow: 2px 4px 60px rgba(0,0,0,0.9);
-    }
-
-    .hero-sub {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-
-    .hero-sub strong { color: var(--text); }
-
-    .hero-meta {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta-item {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--meta);
-    }
-
-    .hero-meta-item span {
-      color: var(--text-2);
-      display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0;
-      text-transform: none;
-      font-family: var(--font-body);
-      margin-top: 0.2rem;
-    }
-
-    /* ================================================================
-       TOC
-       ================================================================ */
-    .toc {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      padding: 1.5rem 2rem;
-      margin: 3rem 0;
-    }
-
-    .toc-title {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .toc ol {
-      list-style: decimal;
-      padding-left: 1.2rem;
-    }
-
-    .toc li {
-      font-size: 0.9rem;
-      color: var(--text-2);
-      line-height: 2;
-    }
-
-    .toc a {
-      color: var(--text-2);
-      background-image: none !important;
-      transition: color var(--ease);
-    }
-
-    .toc a:hover { color: var(--accent); }
-
-    /* ================================================================
-       SECTION
-       ================================================================ */
-    .section {
-      padding: 4rem 0;
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .section-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.8rem;
-    }
-
-    .section-label::before { content: '// '; opacity: 0.6; }
-
-    .section-title {
-      font-family: var(--font-d);
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 2rem;
-    }
-
-    /* ================================================================
-       OBJECTIVES
-       ================================================================ */
-    .objectives {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .objective-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      transition: border-color var(--ease);
-    }
-
-    .objective-item:hover { border-color: var(--accent); }
-
-    .obj-checkbox {
-      width: 18px;
-      height: 18px;
-      border: 2px solid var(--meta);
-      flex-shrink: 0;
-      margin-top: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .obj-checkbox.done {
-      border-color: var(--accent);
-      background: var(--accent-dim);
-    }
-
-    .obj-checkbox.done::after {
-      content: '✓';
-      color: var(--accent);
-      font-size: 0.7rem;
-    }
-
-    .objective-item p {
-      font-size: 0.92rem;
-      color: var(--text-2);
-      line-height: 1.5;
-    }
-
-    /* ================================================================
-       IMPACT TABLE
-       ================================================================ */
-    .impact-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.5rem;
-    }
-
-    .impact-table th {
-      text-align: left;
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--meta);
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .impact-table td {
-      padding: 1rem;
-      font-size: 0.88rem;
-      color: var(--text-2);
-      border-bottom: 1px solid var(--border-soft);
-      vertical-align: top;
-      line-height: 1.55;
-    }
-
-    .impact-table tr:hover td { background: var(--surface); }
-
-    .impact-table td:first-child {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--meta);
-      white-space: nowrap;
-      width: 100px;
-    }
-
-    .impact-table td strong { color: var(--text); }
-
-    .tag {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-dim);
-      border: 1px solid rgba(214, 43, 69, 0.2);
-      padding: 0.15rem 0.5rem;
-      margin-top: 0.4rem;
-    }
-
-    /* ================================================================
-       BULLET SECTIONS
-       ================================================================ */
-    .bullet-list {
-      list-style: none;
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .bullet-list li {
-      position: relative;
-      padding: 0.9rem 1rem 0.9rem 2.5rem;
-      font-size: 0.9rem;
-      color: var(--text-2);
-      background: var(--surface);
-      border: 1px solid var(--border-soft);
-      line-height: 1.55;
-      transition: border-color var(--ease);
-    }
-
-    .bullet-list li:hover { border-color: var(--border); }
-
-    .bullet-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0.9rem;
-      color: var(--accent);
-      font-size: 0.75rem;
-    }
-
-    .bullet-list li strong { color: var(--text); }
-
-    /* ================================================================
-       MENTOR TABLE
-       ================================================================ */
-    .mentor-grid {
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .mentor-card {
-      display: grid;
-      grid-template-columns: 160px 1fr 1fr;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border-soft);
-      transition: border-color var(--ease);
-    }
-
-    .mentor-card:hover { border-color: var(--border); }
-
-    .mentor-name {
-      font-size: 0.88rem;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .mentor-field {
-      font-size: 0.85rem;
-      color: var(--text-2);
-      line-height: 1.5;
-    }
-
-    .mentor-field-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--meta);
-      margin-bottom: 0.35rem;
-    }
-
-    /* ================================================================
-       STACK GRID
-       ================================================================ */
-    .stack-level {
-      margin-bottom: 2rem;
-    }
-
-    .stack-level-title {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--meta);
-      margin-bottom: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .stack-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .stack-dot.expert     { background: #22c55e; }
-    .stack-dot.proficient { background: #eab308; }
-    .stack-dot.know       { background: #3b82f6; }
-
-    .stack-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .stack-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-2);
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      padding: 0.3rem 0.7rem;
-      transition: border-color var(--ease), color var(--ease);
-    }
-
-    .stack-tag:hover {
-      border-color: var(--accent);
-      color: var(--text);
-    }
-
-    /* ================================================================
-       HARD SITUATIONS
-       ================================================================ */
-    .situation-list {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .situation-card {
-      padding: 1.25rem 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border-soft);
-      border-left: 3px solid var(--accent);
-    }
-
-    .situation-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .situation-body {
-      font-size: 0.87rem;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-
-    /* ================================================================
-       RESPONSIVE
-       ================================================================ */
-    @media (max-width: 640px) {
-      .mentor-card { grid-template-columns: 1fr; }
-    }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sérgio Luiz dos Santos Junior",
+    "jobTitle": "Senior Analyst, Back-End Development",
+    "worksFor": { "@type": "Organization", "name": "Avanade" },
+    "url": "https://sergingroisman.github.io/brag/"
+  }
+  </script>
 </head>
 <body>
 
-  <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
       <a class="topbar-logo" href="/">Sérgio Santos</a>
       <nav>
         <ul class="topbar-nav">
-          <li><a href="/">Blog</a></li>
-          <li><a href="/portfolio/">Portfolio</a></li>
+          <li><a href="/cv/" >Currículo</a></li>
+          <li><a href="/blog/" >Blog</a></li>
           <li><a href="/brag/" class="active">Brag</a></li>
-          <li><a href="/about/">About</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="hero">
-    <div class="container hero-inner">
-      <span class="hero-eyebrow">// registro de impacto — 2026</span>
-      <h1 class="hero-title">Brag<br>Document</h1>
-      <p class="hero-sub">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <span class="page-eyebrow">// registro de impacto — 2026</span>
+      <h1 class="page-title">Brag<br>Document</h1>
+      <p class="page-sub">
         <strong>Sérgio Santos</strong> · Senior Software Engineer · Avanade<br>
-        Impacto mensurável, decisões técnicas, liderança real.
+        Impacto mensurável, decisões técnicas, liderança real. Atualizado com dados do Jira.
       </p>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          empresa
-          <span>Avanade</span>
-        </div>
-        <div class="hero-meta-item">
-          conta
-          <span>Grupo de Saúde</span>
-        </div>
-        <div class="hero-meta-item">
-          atualizado
-          <span>Março 2026</span>
-        </div>
-        <div class="hero-meta-item">
-          anos na empresa
-          <span>2019 → hoje</span>
-        </div>
+      <div class="page-meta">
+        <div class="page-meta-item">empresa<span>Avanade</span></div>
+        <div class="page-meta-item">conta<span>Afya · YDUQS</span></div>
+        <div class="page-meta-item">projeto<span>Campaign (PB)</span></div>
+        <div class="page-meta-item">atualizado<span>02 / Out / 2026</span></div>
       </div>
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
   <main>
     <div class="container">
 
@@ -483,42 +69,92 @@
       <div class="toc">
         <div class="toc-title">// índice</div>
         <ol>
-          <li><a href="#objetivos">Objetivos do Ano</a></li>
+          <li><a href="#metricas">Métricas do Projeto Campaign (Jira)</a></li>
+          <li><a href="#epicos">Distribuição por Épico</a></li>
           <li><a href="#impacto">Projetos com Impacto Mensurável</a></li>
           <li><a href="#lideranca">Liderança Técnica e Arquitetura</a></li>
           <li><a href="#mentoria">Colaboração e Mentoria</a></li>
           <li><a href="#stack">Stack por Nível de Proficiência</a></li>
-          <li><a href="#situacoes">Situações Difíceis que Gerenciei Bem</a></li>
+          <li><a href="#objetivos">Objetivos</a></li>
         </ol>
       </div>
 
-      <!-- OBJETIVOS -->
-      <section class="section" id="objetivos">
-        <span class="section-label">01 — metas</span>
-        <h2 class="section-title">Objetivos do Ano</h2>
-        <div class="objectives">
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Tirar certificação <strong>AWS</strong> (nível a definir com André Racz)</p>
+      <!-- MÉTRICAS JIRA -->
+      <section class="section" id="metricas">
+        <span class="section-label">01 — dados jira</span>
+        <h2 class="section-title">Métricas do Projeto Campaign</h2>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <span class="metric-value">95</span>
+            <span class="metric-label">cards Done<br>projeto Campaign (PB)</span>
           </div>
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Tirar certificação <strong>AZ-900 Microsoft Azure</strong></p>
+          <div class="metric-card">
+            <span class="metric-value">180,3h</span>
+            <span class="metric-label">horas registradas<br>no projeto</span>
           </div>
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Avançar para trilha de <strong>Arquiteto na Avanade</strong> (1:1 com André Racz)</p>
-          </div>
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Atualizar <strong>LinkedIn e CV</strong> com impacto real dos projetos</p>
+          <div class="metric-card">
+            <span class="metric-value">5</span>
+            <span class="metric-label">épicos com<br>entregas concluídas</span>
           </div>
         </div>
+        <p class="post-body" style="margin:0">
+          Fonte: Jira, projeto <strong>Campaign (pref&nbsp;PB)</strong> — apurado em
+          <strong>02/Out/2026</strong>. Os números refletem apenas os cards atribuídos a mim
+          e marcados como <em>Done</em>.
+        </p>
+      </section>
+
+      <!-- ÉPICOS -->
+      <section class="section" id="epicos">
+        <span class="section-label">02 — distribuição</span>
+        <h2 class="section-title">Distribuição por Épico</h2>
+        <table class="impact-table">
+          <thead>
+            <tr>
+              <th>Épico</th>
+              <th>Descrição</th>
+              <th>Cards Done</th>
+              <th>Horas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PB-8836</td>
+              <td><strong>Sync GAM</strong> — integração/sincronização com Google Ad Manager</td>
+              <td>12</td>
+              <td>45,4h</td>
+            </tr>
+            <tr>
+              <td>PB-8925</td>
+              <td>Entregas do épico PB-8925</td>
+              <td>29</td>
+              <td>38,7h</td>
+            </tr>
+            <tr>
+              <td>PB-9819</td>
+              <td>Entregas do épico PB-9819</td>
+              <td>9</td>
+              <td>20,0h</td>
+            </tr>
+            <tr>
+              <td>PB-8926</td>
+              <td>Entregas do épico PB-8926</td>
+              <td>11</td>
+              <td>19,5h</td>
+            </tr>
+            <tr>
+              <td>PB-10660</td>
+              <td>Entregas do épico PB-10660</td>
+              <td>2</td>
+              <td>12,2h</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <!-- IMPACTO -->
       <section class="section" id="impacto">
-        <span class="section-label">02 — resultados</span>
+        <span class="section-label">03 — resultados</span>
         <h2 class="section-title">Projetos com Impacto Mensurável</h2>
         <table class="impact-table">
           <thead>
@@ -531,40 +167,31 @@
           </thead>
           <tbody>
             <tr>
+              <td>Mar 2021–hoje</td>
+              <td>
+                <strong>Afya — Campaign (Líder Interino)</strong>
+                <div><span class="tag">NestJS</span> <span class="tag">Keycloak</span> <span class="tag">K8s</span></div>
+              </td>
+              <td>Liderei 2 projetos simultâneos; implementei Keycloak ponta-a-ponta, CI/CD e infra Kubernetes</td>
+              <td>95 cards entregues (Done) e 180,3h registradas no Jira; escalabilidade resolvida sem downtime</td>
+            </tr>
+            <tr>
+              <td>2021–2022</td>
+              <td>
+                <strong>Afya — OneSignal</strong>
+                <div><span class="tag">Next.js</span> <span class="tag">Go</span> <span class="tag">RabbitMQ</span></div>
+              </td>
+              <td>Desbloqueei a integração OneSignal que o time anterior não conseguiu entregar; implementei RabbitMQ + Go</td>
+              <td>Funcionalidade de notificação entregue no prazo, com impacto direto no engajamento</td>
+            </tr>
+            <tr>
               <td>2019–2021</td>
               <td>
                 <strong>YDUQS / Estácio</strong>
                 <div><span class="tag">React Native</span> <span class="tag">Node.js</span></div>
               </td>
               <td>Refatorei e subi versão do app em tempo recorde; mentorei o backend em JavaScript avançado</td>
-              <td>Base usada por 2+ anos; ~200k acessos/mês sustentados pelo maior grupo de educação do Brasil (+700k alunos)</td>
-            </tr>
-            <tr>
-              <td>2021–2022</td>
-              <td>
-                <strong>Afya — OneSignal</strong>
-                <div><span class="tag">Next.js</span> <span class="tag">GoLang</span> <span class="tag">RabbitMQ</span></div>
-              </td>
-              <td>Desbloqueei integração OneSignal que time anterior não conseguiu; implementei RabbitMQ + GoLang</td>
-              <td>Funcionalidade de notificação entregue no prazo com impacto direto no engajamento de usuários</td>
-            </tr>
-            <tr>
-              <td>2023–hoje</td>
-              <td>
-                <strong>Afya — Campaign (Líder Interino)</strong>
-                <div><span class="tag">NestJS</span> <span class="tag">Next.js 15</span> <span class="tag">Keycloak</span> <span class="tag">K8s</span></div>
-              </td>
-              <td>Liderei 2 projetos simultâneos; implementei Keycloak ponta-a-ponta, CI/CD, Next.js 15, infra Kubernetes</td>
-              <td>Plataforma de campanhas desbloqueada; escalabilidade resolvida; frontend refatorado</td>
-            </tr>
-            <tr>
-              <td>2023–hoje</td>
-              <td>
-                <strong>Afya — Manutenção</strong>
-                <div><span class="tag">AWS</span> <span class="tag">Serverless</span></div>
-              </td>
-              <td>Mantive base de dados nacional de médicos do Brasil</td>
-              <td>Estabilidade e zero incidentes críticos</td>
+              <td>Base usada por 2+ anos no maior grupo de educação do Brasil</td>
             </tr>
             <tr>
               <td>2025</td>
@@ -581,71 +208,29 @@
 
       <!-- LIDERANÇA -->
       <section class="section" id="lideranca">
-        <span class="section-label">03 — arquitetura</span>
+        <span class="section-label">04 — arquitetura</span>
         <h2 class="section-title">Liderança Técnica e Arquitetura</h2>
         <ul class="bullet-list">
-          <li><strong>Migração Serverless → NestJS:</strong> Identifiquei gargalo de escalabilidade (muitos endpoints estourando o limite do Serverless Framework) e liderei a migração para NestJS — mentorando o time durante toda a transição</li>
-          <li><strong>Migração de infra ElasticBeanstalk → Kubernetes + ArgoCD + Grafana:</strong> Coordenei com time de SRE do cliente aumentando observabilidade e resiliência</li>
-          <li><strong>Keycloak ponta a ponta:</strong> Arquitetei e implementei toda a camada de autenticação do projeto Campaign com controle granular de permissões para 15 usuários internos</li>
-          <li><strong>CI/CD com GitHub Actions:</strong> Configurei pipelines do zero para 2 projetos, padronizando o processo de entrega</li>
-          <li><strong>Next.js 15 — Base do frontend Campaign 2.0:</strong> Migrei, refatorei e criei a estrutura base do novo frontend da plataforma de campanhas</li>
-          <li><strong>POC Chatbot + RAG com GPT + LangChain:</strong> Projetei e desenvolvi do zero — entregue 1 semana antes do prazo para suportar lançamento de medicamento de laboratório farmacêutico</li>
-          <li><strong>MCP do Figma para tokens Tailwind:</strong> Primeiro no projeto a usar essa abordagem — acelerou significativamente a implementação do design system</li>
-          <li><strong>Apoiei Inglide (backend lead):</strong> Decisões de arquitetura → módulo de Config/Envs nível enterprise com NestJS</li>
+          <li><strong>Migração Serverless → NestJS:</strong> Identifiquei o gargalo de escalabilidade (endpoints estourando o limite do Serverless Framework) e liderei a migração para NestJS com arquitetura Hexagonal + DDD — <strong>zero downtime</strong> — mentorando o time durante toda a transição</li>
+          <li><strong>Migração ElasticBeanstalk → Kubernetes + ArgoCD + Grafana:</strong> Coordenei com o time de SRE do cliente, aumentando observabilidade e resiliência (GitOps)</li>
+          <li><strong>Keycloak ponta a ponta:</strong> Arquitetei e implementei toda a camada de autenticação JWT/OAuth2/OIDC com controle de permissões granular</li>
+          <li><strong>Mensageria event-driven:</strong> SNS/SQS + RabbitMQ com DLQ, retry com backoff e idempotência</li>
+          <li><strong>Pacote NPM compartilhado (GLIC):</strong> Cliente GAM + schemas CloudEvents 1.0 reutilizáveis entre serviços</li>
+          <li><strong>CI/CD com GitHub Actions:</strong> Pipelines do zero com <strong>1.000+ testes Jest</strong> rodando em CI</li>
+          <li><strong>POC Chatbot + RAG (GPT + LangChain):</strong> Projetei e desenvolvi do zero — entregue 1 semana antes do prazo para suportar o lançamento de um medicamento de laboratório farmacêutico</li>
         </ul>
       </section>
 
       <!-- MENTORIA -->
       <section class="section" id="mentoria">
-        <span class="section-label">04 — pessoas</span>
+        <span class="section-label">05 — pessoas</span>
         <h2 class="section-title">Colaboração e Mentoria</h2>
         <div class="mentor-grid">
           <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Inglide</div>
-            </div>
+            <div class="mentor-name">Time Afya Backend</div>
             <div class="mentor-field">
               <span class="mentor-field-label">Como ajudei</span>
-              Decisões de arquitetura do backend
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Implementação do módulo de Config/Envs nível enterprise com NestJS
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Felipe Gasparotto</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Docker + docker-compose + LocalStack para simular AWS S3 localmente
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Evitou retrabalho: implementou upload S3 sem precisar de ambiente AWS de QA provisionado
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Time YDUQS</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Mentoria em JavaScript avançado durante missão presencial no RJ
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Manteve padrão de qualidade e velocidade de entrega com time reduzido
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Time Afya Backend</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Mentorei migração Serverless → NestJS
+              Mentorei a migração Serverless → NestJS
             </div>
             <div class="mentor-field">
               <span class="mentor-field-label">Resultado</span>
@@ -653,16 +238,47 @@
             </div>
           </div>
           <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Time Afya Infra</div>
-            </div>
+            <div class="mentor-name">Time Afya Infra</div>
             <div class="mentor-field">
               <span class="mentor-field-label">Como ajudei</span>
-              Coordenei migração ElasticBeanstalk → Kubernetes com SRE do cliente
+              Coordenei a migração ElasticBeanstalk → Kubernetes com o SRE do cliente
             </div>
             <div class="mentor-field">
               <span class="mentor-field-label">Resultado</span>
               Observabilidade e resiliência da infra aumentadas
+            </div>
+          </div>
+          <div class="mentor-card">
+            <div class="mentor-name">Inglide</div>
+            <div class="mentor-field">
+              <span class="mentor-field-label">Como ajudei</span>
+              Decisões de arquitetura do backend
+            </div>
+            <div class="mentor-field">
+              <span class="mentor-field-label">Resultado</span>
+              Módulo de Config/Envs nível enterprise com NestJS
+            </div>
+          </div>
+          <div class="mentor-card">
+            <div class="mentor-name">Felipe Gasparotto</div>
+            <div class="mentor-field">
+              <span class="mentor-field-label">Como ajudei</span>
+              Docker + docker-compose + LocalStack para simular AWS S3 localmente
+            </div>
+            <div class="mentor-field">
+              <span class="mentor-field-label">Resultado</span>
+              Implementou upload S3 sem precisar de ambiente AWS de QA provisionado
+            </div>
+          </div>
+          <div class="mentor-card">
+            <div class="mentor-name">Time YDUQS</div>
+            <div class="mentor-field">
+              <span class="mentor-field-label">Como ajudei</span>
+              Mentoria em JavaScript avançado durante missão presencial no RJ
+            </div>
+            <div class="mentor-field">
+              <span class="mentor-field-label">Resultado</span>
+              Manteve qualidade e velocidade de entrega com time reduzido
             </div>
           </div>
         </div>
@@ -670,21 +286,15 @@
 
       <!-- STACK -->
       <section class="section" id="stack">
-        <span class="section-label">05 — skills</span>
+        <span class="section-label">06 — skills</span>
         <h2 class="section-title">Stack por Nível de Proficiência</h2>
 
         <div class="stack-level">
-          <div class="stack-level-title">
-            <span class="stack-dot expert"></span>
-            Especialidade — usa em produção, mentora outros
-          </div>
+          <div class="stack-level-title"><span class="stack-dot expert"></span>Especialidade — uso em produção, mentor</div>
           <div class="stack-tags">
             <span class="stack-tag">NestJS</span>
-            <span class="stack-tag">Next.js</span>
             <span class="stack-tag">Node.js</span>
             <span class="stack-tag">TypeScript</span>
-            <span class="stack-tag">React Native</span>
-            <span class="stack-tag">React</span>
             <span class="stack-tag">Arquitetura Hexagonal</span>
             <span class="stack-tag">DDD</span>
             <span class="stack-tag">AWS</span>
@@ -694,79 +304,79 @@
         </div>
 
         <div class="stack-level">
-          <div class="stack-level-title">
-            <span class="stack-dot proficient"></span>
-            Proficiente — usou em projetos reais
-          </div>
+          <div class="stack-level-title"><span class="stack-dot proficient"></span>Proficiente — usei em projetos reais</div>
           <div class="stack-tags">
-            <span class="stack-tag">GoLang</span>
+            <span class="stack-tag">Go</span>
             <span class="stack-tag">RabbitMQ</span>
+            <span class="stack-tag">SNS/SQS</span>
             <span class="stack-tag">Keycloak</span>
             <span class="stack-tag">Kubernetes</span>
-            <span class="stack-tag">Serverless Framework</span>
-            <span class="stack-tag">AWS Amplify</span>
-            <span class="stack-tag">AWS Lambda</span>
-            <span class="stack-tag">S3</span>
-            <span class="stack-tag">LocalStack</span>
+            <span class="stack-tag">Terraform</span>
             <span class="stack-tag">ArgoCD</span>
             <span class="stack-tag">Grafana</span>
+            <span class="stack-tag">Next.js 15</span>
+            <span class="stack-tag">PostgreSQL</span>
+            <span class="stack-tag">MongoDB</span>
+            <span class="stack-tag">Redis</span>
             <span class="stack-tag">TDD</span>
           </div>
         </div>
 
         <div class="stack-level">
-          <div class="stack-level-title">
-            <span class="stack-dot know"></span>
-            Conhecimento — usou pontualmente
-          </div>
+          <div class="stack-level-title"><span class="stack-dot know"></span>Conhecimento — usei pontualmente</div>
           <div class="stack-tags">
-            <span class="stack-tag">ElasticBeanstalk</span>
-            <span class="stack-tag">Ngrok</span>
-            <span class="stack-tag">OneSignal</span>
-            <span class="stack-tag">Google Ads API</span>
-            <span class="stack-tag">Figma MCP</span>
             <span class="stack-tag">LangChain</span>
             <span class="stack-tag">OpenAI API</span>
             <span class="stack-tag">RAG</span>
+            <span class="stack-tag">Qdrant</span>
+            <span class="stack-tag">MCP</span>
+            <span class="stack-tag">Serverless Framework</span>
+            <span class="stack-tag">ElasticBeanstalk</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">React Native</span>
+            <span class="stack-tag">Go</span>
+            <span class="stack-tag">Ruby on Rails</span>
           </div>
         </div>
       </section>
 
-      <!-- SITUAÇÕES DIFÍCEIS -->
-      <section class="section" id="situacoes">
-        <span class="section-label">06 — resiliência</span>
-        <h2 class="section-title">Situações Difíceis que Gerenciei Bem</h2>
-        <div class="situation-list">
-          <div class="situation-card">
-            <div class="situation-title">Integração OneSignal sem documentação</div>
-            <div class="situation-body">Time anterior não tinha conseguido. Resolvi o problema de websocket server-side/client-side do Next.js sob pressão de prazo — entregue no tempo, desbloqueando a funcionalidade de notificações que travava o projeto.</div>
+      <!-- OBJETIVOS -->
+      <section class="section" id="objetivos">
+        <span class="section-label">07 — metas</span>
+        <h2 class="section-title">Objetivos</h2>
+        <div class="objectives">
+          <div class="objective-item">
+            <div class="obj-checkbox done"></div>
+            <p><strong>AZ-900 Microsoft Azure</strong> — em andamento (voucher 100% Avanade)</p>
           </div>
-          <div class="situation-card">
-            <div class="situation-title">Calendário de slots no frontend</div>
-            <div class="situation-body">O time não conseguia implementar a tempo. Absorvi o escopo, implementei e entreguei dentro da janela de negócio sem atrasar as demais entregas dos dois projetos simultâneos.</div>
+          <div class="objective-item">
+            <div class="obj-checkbox"></div>
+            <p>Evoluir para <strong>certificação Microsoft AZ-204</strong></p>
           </div>
-          <div class="situation-card">
-            <div class="situation-title">Gargalo de escalabilidade Serverless</div>
-            <div class="situation-body">Identifiquei o limite técnico do framework antes que virasse crise de produção. Propus e liderou a migração para NestJS sem interrupção dos projetos em andamento.</div>
+          <div class="objective-item">
+            <div class="obj-checkbox done"></div>
+            <p>Lançar o <strong>blog técnico</strong> e construir presença pública — primeira versão no ar</p>
           </div>
-          <div class="situation-card">
-            <div class="situation-title">2 projetos simultâneos como líder interino</div>
-            <div class="situation-body">Coordenei entregas, priorização e time em Campaign e Manutenção sem ter o título formal de tech lead — e sem perder nenhuma data crítica de negócio.</div>
+          <div class="objective-item">
+            <div class="obj-checkbox"></div>
+            <p><strong>Contribuir com open source</strong></p>
+          </div>
+          <div class="objective-item">
+            <div class="obj-checkbox"></div>
+            <p>Evoluir para <strong>dev sênior/arquiteto</strong> na Avanade</p>
           </div>
         </div>
       </section>
 
-    </div><!-- /container -->
+    </div>
   </main>
 
-  <!-- FOOTER -->
   <footer id="page-footer">
     <div class="container">
       <p>
-        <a href="/">← voltar ao blog</a>
+        <a href="/">← hub</a>
         &nbsp;·&nbsp;
-        <span>☕</span> &nbsp;·&nbsp;
-        anime underground &nbsp;·&nbsp; muito café
+        <span>☕</span> &nbsp;·&nbsp; Recife/PE, Brasil
       </p>
     </div>
   </footer>
@@ -791,10 +401,10 @@
 
     (function () {
       const els = document.querySelectorAll(
-        '.section, .situation-card, .mentor-card, .objective-item, .stack-level'
+        '.section, .situation-card, .mentor-card, .objective-item, .stack-level, .hub-card, .post-item, .metric-card'
       );
       els.forEach(function (el) { el.classList.add('reveal'); });
-      document.querySelectorAll('.situation-card, .mentor-card, .objective-item').forEach(function (el, i) {
+      document.querySelectorAll('.situation-card, .mentor-card, .objective-item, .hub-card, .post-item, .metric-card').forEach(function (el, i) {
         el.classList.add('reveal-delay-' + Math.min(i % 3 + 1, 3));
       });
       var io = new IntersectionObserver(function (entries) {

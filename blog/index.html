@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Sérgio Santos</title>
+  <meta name="description" content="Blog técnico de Sérgio Santos (Sergin): engenharia de software, arquitetura back-end, IA aplicada e a vida real de quem escreve código." />
+  <meta name="author" content="Sérgio Luiz dos Santos Junior" />
+  <link rel="canonical" href="https://sergingroisman.github.io/blog/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog — Sérgio Santos" />
+  <meta property="og:description" content="Engenharia de software, arquitetura back-end e IA aplicada." />
+  <meta property="og:url" content="https://sergingroisman.github.io/blog/" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <link rel="icon" href="/img/favicon.ico" />
+  <link rel="stylesheet" href="/css/pages.css" />
+  <link rel="stylesheet" href="/css/hub.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog — Sérgio Santos",
+    "url": "https://sergingroisman.github.io/blog/",
+    "author": { "@type": "Person", "name": "Sérgio Luiz dos Santos Junior" },
+    "inLanguage": "pt-BR"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="topbar-logo" href="/">Sérgio Santos</a>
+      <nav>
+        <ul class="topbar-nav">
+          <li><a href="/cv/" >Currículo</a></li>
+          <li><a href="/blog/" class="active">Blog</a></li>
+          <li><a href="/brag/" >Brag</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <span class="page-eyebrow">// posts técnicos</span>
+      <h1 class="page-title">Blog</h1>
+      <p class="page-sub">
+        Engenharia de software, arquitetura back-end e <strong>IA aplicada</strong> —
+        escrito por quem ainda abre o terminal todo dia.
+      </p>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+
+      <section class="section" id="posts">
+        <span class="section-label">01 — posts</span>
+        <h2 class="section-title">Últimos posts</h2>
+
+        <div class="post-list">
+          <a class="post-item" href="/blog/ai-lair/">
+            <span class="post-date">02 / Out / 2026</span>
+            <span class="post-title">Eu construí um AI Lair: monitorando cota de LLM, fila de PRs e watchdogs</span>
+            <span class="post-excerpt">
+              Como montei um pequeno ecossistema de ferramentas em torno do meu agente —
+              o <code>ai-usagebar</code> (Rust) monitorando cota de DeepSeek/Kimi, um hook
+              <code>on_session_start</code>, um cron watchdog de saldo e o <code>ghpending</code>
+              para a fila de PRs/issues.
+            </span>
+            <span class="post-tags">
+              <span class="tag">IA aplicada</span>
+              <span class="tag">Hermes</span>
+              <span class="tag">Produtividade</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="about-blog">
+        <span class="section-label">02 — sobre o blog</span>
+        <h2 class="section-title">Sobre este blog</h2>
+        <div class="post-body">
+          <p>
+            Escrevo aqui para documentar o que aprendo construindo sistemas — e para ter um
+            registro público do meu próprio progresso. Nada de tutoriais genéricos: os textos
+            saem de problemas reais que eu enfrentei, com as decisões e os trade-offs que tomei.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer id="page-footer">
+    <div class="container">
+      <p>
+        <a href="/">← hub</a>
+        &nbsp;·&nbsp;
+        <span>☕</span> &nbsp;·&nbsp; Recife/PE, Brasil
+      </p>
+    </div>
+  </footer>
+
+  <!-- CURSOR DOT + SCROLL REVEAL -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <script>
+    (function () {
+      const dot = document.getElementById('cursor-dot');
+      let raf;
+      document.addEventListener('mousemove', function (e) {
+        dot.style.opacity = '1';
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          dot.style.left = e.clientX + 'px';
+          dot.style.top  = e.clientY + 'px';
+        });
+      });
+      document.addEventListener('mouseleave', function () { dot.style.opacity = '0'; });
+    })();
+
+    (function () {
+      const els = document.querySelectorAll(
+        '.section, .situation-card, .mentor-card, .objective-item, .stack-level, .hub-card, .post-item, .metric-card'
+      );
+      els.forEach(function (el) { el.classList.add('reveal'); });
+      document.querySelectorAll('.situation-card, .mentor-card, .objective-item, .hub-card, .post-item, .metric-card').forEach(function (el, i) {
+        el.classList.add('reveal-delay-' + Math.min(i % 3 + 1, 3));
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.06 });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>
