@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brag Document — Sérgio Santos</title>
   <meta name="description" content="Registro de impacto técnico real — Senior Software Engineer @ Avanade" />
-  <link rel="stylesheet" href="/css/pages.css" />
+  <link rel="stylesheet" href="/css/arcade.css" />
   <style>
     /* ================================================================
        BRAG — estilos específicos da página
@@ -23,7 +23,7 @@
       justify-content: flex-end;
       padding-bottom: 3.5rem;
       overflow: hidden;
-      background-color: #090909;
+      background-color: transparent;
       border-bottom: 1px solid var(--border);
     }
 
@@ -32,7 +32,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 50%;
-      background: linear-gradient(to top, rgba(214, 43, 69, 0.04), transparent);
+      background: linear-gradient(to top, rgba(129, 82, 223, 0.12), transparent);
       pointer-events: none;
     }
 
@@ -50,11 +50,9 @@
 
     .hero-title {
       font-family: var(--font-d);
-      font-size: clamp(3.5rem, 10vw, 7.5rem);
       font-weight: 700;
       line-height: 0.9;
       letter-spacing: -0.03em;
-      text-transform: uppercase;
       color: var(--text);
       margin-bottom: 1.2rem;
       text-shadow: 2px 4px 60px rgba(0,0,0,0.9);
@@ -428,18 +426,18 @@
     }
   </style>
 </head>
-<body>
+<body class="arcade-page arcade-brag">
 
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
       <a class="topbar-logo" href="/">Sérgio Santos</a>
-      <nav>
+      <nav aria-label="Navegação principal">
         <ul class="topbar-nav">
-          <li><a href="/">Blog</a></li>
-          <li><a href="/portfolio/">Portfolio</a></li>
-          <li><a href="/brag/" class="active">Brag</a></li>
-          <li><a href="/about/">About</a></li>
+          <li><a href="/">Bio</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/portfolio/">Currículo</a></li>
+          <li><a href="/brag/" class="active" aria-current="page">Brag</a></li>
         </ul>
       </nav>
     </div>
@@ -449,7 +447,7 @@
   <section id="hero">
     <div class="container hero-inner">
       <span class="hero-eyebrow">// registro de impacto — 2026</span>
-      <h1 class="hero-title">Brag<br>Document</h1>
+      <h1 class="hero-title">Brag <span class="hero-title-accent">Document</span></h1>
       <p class="hero-sub">
         <strong>Sérgio Santos</strong> · Senior Software Engineer · Avanade<br>
         Impacto mensurável, decisões técnicas, liderança real.
@@ -472,6 +470,10 @@
           <span>2019 → hoje</span>
         </div>
       </div>
+      <button class="print-action" type="button" aria-label="Imprimir ou salvar este documento como PDF" onclick="window.print()">Imprimir / Salvar PDF</button>
+      <figure class="hero-portrait brag-portrait">
+        <img src="/img/arcade/schematic-pose.jpg" alt="Sérgio apresenta um esquema dourado entre ruínas violetas" loading="eager" decoding="async">
+      </figure>
     </div>
   </section>
 
@@ -520,8 +522,9 @@
       <section class="section" id="impacto">
         <span class="section-label">02 — resultados</span>
         <h2 class="section-title">Projetos com Impacto Mensurável</h2>
-        <table class="impact-table">
-          <thead>
+        <div class="impact-table-scroll" role="region" aria-label="Projetos e resultados" tabindex="0">
+          <table class="impact-table">
+            <thead>
             <tr>
               <th>Período</th>
               <th>Projeto</th>
@@ -575,8 +578,9 @@
               <td>Projetei e desenvolvi do zero POC de chatbot com GPT + LangChain + RAG para domínio farmacêutico</td>
               <td>Entregue <strong>1 semana antes do prazo</strong>; primeiro projeto de IA generativa na conta</td>
             </tr>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- LIDERANÇA -->
@@ -763,51 +767,13 @@
   <footer id="page-footer">
     <div class="container">
       <p>
-        <a href="/">← voltar ao blog</a>
+        <a href="/">← voltar à Bio</a>
         &nbsp;·&nbsp;
         <span>☕</span> &nbsp;·&nbsp;
         anime underground &nbsp;·&nbsp; muito café
       </p>
     </div>
   </footer>
-
-  <!-- CURSOR DOT + SCROLL REVEAL -->
-  <div id="cursor-dot" aria-hidden="true"></div>
-
-  <script>
-    (function () {
-      const dot = document.getElementById('cursor-dot');
-      let raf;
-      document.addEventListener('mousemove', function (e) {
-        dot.style.opacity = '1';
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(function () {
-          dot.style.left = e.clientX + 'px';
-          dot.style.top  = e.clientY + 'px';
-        });
-      });
-      document.addEventListener('mouseleave', function () { dot.style.opacity = '0'; });
-    })();
-
-    (function () {
-      const els = document.querySelectorAll(
-        '.section, .situation-card, .mentor-card, .objective-item, .stack-level'
-      );
-      els.forEach(function (el) { el.classList.add('reveal'); });
-      document.querySelectorAll('.situation-card, .mentor-card, .objective-item').forEach(function (el, i) {
-        el.classList.add('reveal-delay-' + Math.min(i % 3 + 1, 3));
-      });
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.06 });
-      els.forEach(function (el) { io.observe(el); });
-    })();
-  </script>
 
 </body>
 </html>

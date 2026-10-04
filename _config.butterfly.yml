@@ -17,11 +17,9 @@ nav:
   fixed: false
 
 menu:
-  Home: / || fas fa-home
-  Archives: /archives/ || fas fa-archive
-  Tags: /tags/ || fas fa-tags
-  Categories: /categories/ || fas fa-folder-open
-  About: /about/ || fas fa-user
+  Bio: / || fas fa-home
+  Blog: /blog/ || fas fa-book-open
+  Currículo: /portfolio/ || fas fa-file-alt
   Brag: /brag/ || fas fa-trophy
 
 # ---------------------------------------------------------------
@@ -51,21 +49,21 @@ social:
 # ---------------------------------------------------------------
 theme_color:
   enable: true
-  main: '#c41e3a'
-  paginator: '#c41e3a'
-  button_hover: '#8b0000'
-  text_selection: '#c41e3a'
-  link_color: '#c41e3a'
-  meta_color: '#888'
-  hr_color: '#3a0a0a'
-  code_foreground: '#ff8a80'
-  code_background: 'rgba(0, 0, 0, 0.60)'
-  toc_color: '#c41e3a'
-  blockquote_padding_color: '#c41e3a'
-  blockquote_background_color: 'rgba(196, 30, 58, 0.08)'
-  scrollbar_color: '#c41e3a'
-  meta_theme_color_light: '1a1a1a'
-  meta_theme_color_dark: '#0d0d0d'
+  main: '#8152df'
+  paginator: '#ffd15b'
+  button_hover: '#b38aff'
+  text_selection: '#f33474'
+  link_color: '#b38aff'
+  meta_color: '#d0bedb'
+  hr_color: '#654394'
+  code_foreground: '#ffd15b'
+  code_background: 'rgba(18, 9, 32, 0.9)'
+  toc_color: '#ffd15b'
+  blockquote_padding_color: '#f33474'
+  blockquote_background_color: 'rgba(129, 82, 223, 0.14)'
+  scrollbar_color: '#8152df'
+  meta_theme_color_light: '#090312'
+  meta_theme_color_dark: '#090312'
 
 # Modo escuro — dark como padrão
 dark_mode:
@@ -215,6 +213,7 @@ animation: true
 # ---------------------------------------------------------------
 lazyload:
   enable: true
+  native: true
   field: site
   placeholder:
   error:
@@ -242,8 +241,8 @@ google_adsense:
   enable_page_level_ads: true
 
 # ---------------------------------------------------------------
-# Custom CSS override — JUNKIE editorial theme
+# Shared retro-indie theme compiled from Stylus
 # ---------------------------------------------------------------
 inject:
   head:
-    - <link rel="stylesheet" href="/css/custom.css">
+    - <link rel="stylesheet" href="/css/arcade.css">

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sérgio Santos — Senior Software Engineer</title>
   <meta name="description" content="Senior Software Engineer · NestJS, TypeScript, AWS, React Native, Next.js" />
-  <link rel="stylesheet" href="/css/pages.css" />
+  <link rel="stylesheet" href="/css/arcade.css" />
   <style>
     /* ================================================================
        PORTFOLIO — estilos específicos da página
@@ -41,7 +41,7 @@
       justify-content: flex-end;
       padding-bottom: 4.5rem;
       overflow: hidden;
-      background-color: #090909;
+      background-color: transparent;
       border-bottom: 1px solid var(--border);
     }
 
@@ -63,7 +63,7 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 50%;
-      background: linear-gradient(to top, rgba(214, 43, 69, 0.05), transparent);
+      background: linear-gradient(to top, rgba(129, 82, 223, 0.12), transparent);
       pointer-events: none;
       z-index: 1;
     }
@@ -85,12 +85,10 @@
 
     .hero-name {
       font-family: var(--font-d);
-      font-size: clamp(4.5rem, 13vw, 10rem);
       font-weight: 700;
       font-style: normal;
       line-height: 0.9;
       letter-spacing: -0.04em;
-      text-transform: uppercase;
       color: var(--text);
       margin-bottom: 1.2rem;
       text-shadow: 2px 4px 60px rgba(0, 0, 0, 0.9);
@@ -366,18 +364,18 @@
     }
   </style>
 </head>
-<body>
+<body class="arcade-page arcade-cv">
 
   <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
       <a class="topbar-logo" href="/">Sérgio Santos</a>
-      <nav>
+      <nav aria-label="Navegação principal">
         <ul class="topbar-nav">
-          <li><a href="/">Blog</a></li>
-          <li><a href="/portfolio/" class="active">Portfolio</a></li>
+          <li><a href="/">Bio</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/portfolio/" class="active" aria-current="page">Currículo</a></li>
           <li><a href="/brag/">Brag</a></li>
-          <li><a href="/about/">About</a></li>
         </ul>
       </nav>
     </div>
@@ -387,12 +385,15 @@
   <section id="hero">
     <div class="container hero-inner">
       <span class="hero-eyebrow">Senior Software Engineer · Avanade · Brasil</span>
-      <h1 class="hero-name">Sérgio<br>Santos</h1>
+      <h1 class="hero-name">Sérgio Santos</h1>
       <p class="hero-role">
         <strong>NestJS · TypeScript · AWS</strong> &nbsp;·&nbsp; Next.js · React Native<br>
         Sistemas distribuídos · Microserviços · 9+ anos
       </p>
       <a class="hero-scroll" href="#about">scroll</a>
+      <figure class="hero-portrait cv-portrait-frame">
+        <img src="/img/arcade/folio-pose.jpg" alt="Retrato pixel art de Sérgio consultando um fólio dourado diante de ruínas violetas" loading="eager" decoding="async">
+      </figure>
     </div>
   </section>
 
@@ -616,58 +617,13 @@
   <footer id="page-footer">
     <div class="container">
       <p>
-        <a href="/">← voltar ao blog</a>
+        <a href="/">← voltar à Bio</a>
         &nbsp;·&nbsp;
         <span>☕</span> &nbsp;·&nbsp;
         anime underground &nbsp;·&nbsp; muito café
       </p>
     </div>
   </footer>
-
-  <!-- CURSOR DOT + SCROLL REVEAL -->
-  <div id="cursor-dot" aria-hidden="true"></div>
-
-  <script>
-    // ── Cursor dot ────────────────────────────────────────────────
-    (function () {
-      const dot = document.getElementById('cursor-dot');
-      let raf;
-      document.addEventListener('mousemove', function (e) {
-        dot.style.opacity = '1';
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(function () {
-          dot.style.left = e.clientX + 'px';
-          dot.style.top  = e.clientY + 'px';
-        });
-      });
-      document.addEventListener('mouseleave', function () {
-        dot.style.opacity = '0';
-      });
-    })();
-
-    // ── Scroll reveal ─────────────────────────────────────────────
-    (function () {
-      const els = document.querySelectorAll(
-        '.section, .timeline-item, .skill, .interest-card'
-      );
-      els.forEach(function (el) { el.classList.add('reveal'); });
-      document.querySelectorAll('.timeline-item').forEach(function (el, i) {
-        el.classList.add('reveal-delay-' + Math.min(i % 4 + 1, 4));
-      });
-      document.querySelectorAll('.interest-card').forEach(function (el, i) {
-        el.classList.add('reveal-delay-' + Math.min(i % 4 + 1, 4));
-      });
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      els.forEach(function (el) { io.observe(el); });
-    })();
-  </script>
 
 </body>
 </html>
