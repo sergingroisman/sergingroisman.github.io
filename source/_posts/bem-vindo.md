@@ -10,7 +10,7 @@ categories:
 cover: https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80
 ---
 
-Depois de quase 7 anos na Avanade construindo sistemas distribuídos, cheguei em uma conclusão: **escrever sobre o que você faz é tão importante quanto fazer bem feito**.
+Depois de anos construindo sistemas distribuídos, cheguei a uma conclusão: **escrever sobre o que você faz é tão importante quanto fazer bem feito**.
 
 <!-- more -->
 
@@ -29,8 +29,8 @@ Esse conhecimento some quando a pessoa sai da empresa. Ou pior: nunca foi docume
 
 ## Por que agora?
 
-Porque o melhor momento para plantar uma árvore foi há 7 anos. O segundo melhor momento é hoje.
+O melhor momento para começar pode ter sido antes. O segundo melhor é hoje.
 
 ---
 
-*Sérgio Santos é Engenheiro de Software Sênior na Avanade. Trabalha com Node.js, Golang e AWS desde antes de ser legal. [GitHub](https://github.com/sergingroisman) · [LinkedIn](https://linkedin.com/in/sergin-groisman)*
+*Sérgio Santos é Senior Software Engineer com foco em back-end. [GitHub](https://github.com/sergingroisman) · [LinkedIn](https://linkedin.com/in/sergin-groisman)*

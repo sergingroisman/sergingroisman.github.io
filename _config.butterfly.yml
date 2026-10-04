@@ -149,7 +149,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: 7 anos construindo coisas que não caem. Quando não tô no terminal, tô no Switch ou discutindo anime que ninguém assistiu.
+    description: Engenharia back-end, APIs e sistemas distribuídos. Fora do terminal, gosto de videogames, anime e café.
     button:
       enable: true
       icon: fab fa-github

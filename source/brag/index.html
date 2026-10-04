@@ -1,434 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brag Document — Sérgio Santos</title>
-  <meta name="description" content="Registro de impacto técnico real — Senior Software Engineer @ Avanade" />
-  <link rel="stylesheet" href="/css/arcade.css" />
-  <style>
-    /* ================================================================
-       BRAG — estilos específicos da página
-       ================================================================ */
-
-    /* ================================================================
-       HERO
-       ================================================================ */
-    #hero {
-      position: relative;
-      padding-top: 52px;
-      min-height: 38vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 3.5rem;
-      overflow: hidden;
-      background-color: transparent;
-      border-bottom: 1px solid var(--border);
-    }
-
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 50%;
-      background: linear-gradient(to top, rgba(129, 82, 223, 0.12), transparent);
-      pointer-events: none;
-    }
-
-    .hero-inner { position: relative; z-index: 2; }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .hero-title {
-      font-family: var(--font-d);
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 1.2rem;
-      text-shadow: 2px 4px 60px rgba(0,0,0,0.9);
-    }
-
-    .hero-sub {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-
-    .hero-sub strong { color: var(--text); }
-
-    .hero-meta {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta-item {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--meta);
-    }
-
-    .hero-meta-item span {
-      color: var(--text-2);
-      display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0;
-      text-transform: none;
-      font-family: var(--font-body);
-      margin-top: 0.2rem;
-    }
-
-    /* ================================================================
-       TOC
-       ================================================================ */
-    .toc {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      padding: 1.5rem 2rem;
-      margin: 3rem 0;
-    }
-
-    .toc-title {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .toc ol {
-      list-style: decimal;
-      padding-left: 1.2rem;
-    }
-
-    .toc li {
-      font-size: 0.9rem;
-      color: var(--text-2);
-      line-height: 2;
-    }
-
-    .toc a {
-      color: var(--text-2);
-      background-image: none !important;
-      transition: color var(--ease);
-    }
-
-    .toc a:hover { color: var(--accent); }
-
-    /* ================================================================
-       SECTION
-       ================================================================ */
-    .section {
-      padding: 4rem 0;
-      border-bottom: 1px solid var(--border-soft);
-    }
-
-    .section-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.8rem;
-    }
-
-    .section-label::before { content: '// '; opacity: 0.6; }
-
-    .section-title {
-      font-family: var(--font-d);
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 2rem;
-    }
-
-    /* ================================================================
-       OBJECTIVES
-       ================================================================ */
-    .objectives {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .objective-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      transition: border-color var(--ease);
-    }
-
-    .objective-item:hover { border-color: var(--accent); }
-
-    .obj-checkbox {
-      width: 18px;
-      height: 18px;
-      border: 2px solid var(--meta);
-      flex-shrink: 0;
-      margin-top: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .obj-checkbox.done {
-      border-color: var(--accent);
-      background: var(--accent-dim);
-    }
-
-    .obj-checkbox.done::after {
-      content: '✓';
-      color: var(--accent);
-      font-size: 0.7rem;
-    }
-
-    .objective-item p {
-      font-size: 0.92rem;
-      color: var(--text-2);
-      line-height: 1.5;
-    }
-
-    /* ================================================================
-       IMPACT TABLE
-       ================================================================ */
-    .impact-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.5rem;
-    }
-
-    .impact-table th {
-      text-align: left;
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--meta);
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .impact-table td {
-      padding: 1rem;
-      font-size: 0.88rem;
-      color: var(--text-2);
-      border-bottom: 1px solid var(--border-soft);
-      vertical-align: top;
-      line-height: 1.55;
-    }
-
-    .impact-table tr:hover td { background: var(--surface); }
-
-    .impact-table td:first-child {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--meta);
-      white-space: nowrap;
-      width: 100px;
-    }
-
-    .impact-table td strong { color: var(--text); }
-
-    .tag {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-dim);
-      border: 1px solid rgba(214, 43, 69, 0.2);
-      padding: 0.15rem 0.5rem;
-      margin-top: 0.4rem;
-    }
-
-    /* ================================================================
-       BULLET SECTIONS
-       ================================================================ */
-    .bullet-list {
-      list-style: none;
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .bullet-list li {
-      position: relative;
-      padding: 0.9rem 1rem 0.9rem 2.5rem;
-      font-size: 0.9rem;
-      color: var(--text-2);
-      background: var(--surface);
-      border: 1px solid var(--border-soft);
-      line-height: 1.55;
-      transition: border-color var(--ease);
-    }
-
-    .bullet-list li:hover { border-color: var(--border); }
-
-    .bullet-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0.9rem;
-      color: var(--accent);
-      font-size: 0.75rem;
-    }
-
-    .bullet-list li strong { color: var(--text); }
-
-    /* ================================================================
-       MENTOR TABLE
-       ================================================================ */
-    .mentor-grid {
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .mentor-card {
-      display: grid;
-      grid-template-columns: 160px 1fr 1fr;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border-soft);
-      transition: border-color var(--ease);
-    }
-
-    .mentor-card:hover { border-color: var(--border); }
-
-    .mentor-name {
-      font-size: 0.88rem;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .mentor-field {
-      font-size: 0.85rem;
-      color: var(--text-2);
-      line-height: 1.5;
-    }
-
-    .mentor-field-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--meta);
-      margin-bottom: 0.35rem;
-    }
-
-    /* ================================================================
-       STACK GRID
-       ================================================================ */
-    .stack-level {
-      margin-bottom: 2rem;
-    }
-
-    .stack-level-title {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--meta);
-      margin-bottom: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .stack-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .stack-dot.expert     { background: #22c55e; }
-    .stack-dot.proficient { background: #eab308; }
-    .stack-dot.know       { background: #3b82f6; }
-
-    .stack-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .stack-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-2);
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      padding: 0.3rem 0.7rem;
-      transition: border-color var(--ease), color var(--ease);
-    }
-
-    .stack-tag:hover {
-      border-color: var(--accent);
-      color: var(--text);
-    }
-
-    /* ================================================================
-       HARD SITUATIONS
-       ================================================================ */
-    .situation-list {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .situation-card {
-      padding: 1.25rem 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border-soft);
-      border-left: 3px solid var(--accent);
-    }
-
-    .situation-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .situation-body {
-      font-size: 0.87rem;
-      color: var(--text-2);
-      line-height: 1.6;
-    }
-
-    /* ================================================================
-       RESPONSIVE
-       ================================================================ */
-    @media (max-width: 640px) {
-      .mentor-card { grid-template-columns: 1fr; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090312">
+  <meta name="description" content="Estudos de caso públicos sobre engenharia back-end, arquitetura e decisões técnicas.">
+  <title>Brag — Sérgio Santos</title>
+  <link rel="stylesheet" href="/css/arcade.css">
 </head>
 <body class="arcade-page arcade-brag">
-
-  <!-- TOPBAR -->
   <header class="topbar">
     <div class="topbar-inner">
       <a class="topbar-logo" href="/">Sérgio Santos</a>
@@ -443,33 +23,13 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="hero">
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+  <section id="hero" aria-labelledby="brag-title">
     <div class="container hero-inner">
-      <span class="hero-eyebrow">// registro de impacto — 2026</span>
-      <h1 class="hero-title">Brag <span class="hero-title-accent">Document</span></h1>
-      <p class="hero-sub">
-        <strong>Sérgio Santos</strong> · Senior Software Engineer · Avanade<br>
-        Impacto mensurável, decisões técnicas, liderança real.
-      </p>
-      <div class="hero-meta">
-        <div class="hero-meta-item">
-          empresa
-          <span>Avanade</span>
-        </div>
-        <div class="hero-meta-item">
-          conta
-          <span>Grupo de Saúde</span>
-        </div>
-        <div class="hero-meta-item">
-          atualizado
-          <span>Março 2026</span>
-        </div>
-        <div class="hero-meta-item">
-          anos na empresa
-          <span>2019 → hoje</span>
-        </div>
-      </div>
+      <span class="hero-eyebrow">Estudos de caso · engenharia back-end</span>
+      <h1 class="hero-title" id="brag-title">Brag <span class="hero-title-accent">Document</span></h1>
+      <p class="hero-sub"><strong>Sérgio Santos</strong> · Senior Software Engineer<br>Decisões técnicas, colaboração e resultados descritos sem dados confidenciais.</p>
       <button class="print-action" type="button" aria-label="Imprimir ou salvar este documento como PDF" onclick="window.print()">Imprimir / Salvar PDF</button>
       <figure class="hero-portrait brag-portrait">
         <img src="/img/arcade/schematic-pose.jpg" alt="Sérgio apresenta um esquema dourado entre ruínas violetas" loading="eager" decoding="async">
@@ -477,303 +37,71 @@
     </div>
   </section>
 
-  <!-- MAIN CONTENT -->
-  <main>
+  <main id="main-content">
     <div class="container">
+      <p class="brag-intro">Uma seleção concisa de problemas de engenharia, escolhas de arquitetura e contribuições em contexto de produção. Nomes de clientes, colegas, tickets e métricas internas foram omitidos.</p>
 
-      <!-- TOC -->
-      <div class="toc">
-        <div class="toc-title">// índice</div>
-        <ol>
-          <li><a href="#objetivos">Objetivos do Ano</a></li>
-          <li><a href="#impacto">Projetos com Impacto Mensurável</a></li>
-          <li><a href="#lideranca">Liderança Técnica e Arquitetura</a></li>
-          <li><a href="#mentoria">Colaboração e Mentoria</a></li>
-          <li><a href="#stack">Stack por Nível de Proficiência</a></li>
-          <li><a href="#situacoes">Situações Difíceis que Gerenciei Bem</a></li>
-        </ol>
-      </div>
+      <nav class="brag-index" aria-label="Navegar pelos estudos de caso">
+        <a href="#case-services">Evolução de serviços</a>
+        <a href="#case-platform">Infraestrutura e observabilidade</a>
+        <a href="#case-notifications">Integração de notificações</a>
+        <a href="#case-rag">Prova de conceito com RAG</a>
+      </nav>
 
-      <!-- OBJETIVOS -->
-      <section class="section" id="objetivos">
-        <span class="section-label">01 — metas</span>
-        <h2 class="section-title">Objetivos do Ano</h2>
-        <div class="objectives">
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Tirar certificação <strong>AWS</strong> (nível a definir com André Racz)</p>
+      <section aria-label="Estudos de caso">
+        <article class="section brag-case" id="case-services">
+          <span class="section-label">01 — Arquitetura</span>
+          <h2 class="section-title">Evolução de serviços back-end</h2>
+          <div class="brag-case-grid">
+            <p><strong>Contexto</strong>Uma arquitetura baseada em Serverless havia atingido limites de evolução e escalabilidade dos serviços.</p>
+            <p><strong>Decisão</strong>Conduzir a evolução para NestJS, organizando responsabilidades com princípios de DDD e arquitetura hexagonal.</p>
+            <p><strong>Contribuição</strong>Planejei a migração, implementei a nova estrutura e apoiei o time na adoção dos padrões.</p>
+            <p><strong>Resultado</strong>Uma base back-end mais consistente para desenvolver e evoluir os serviços.</p>
           </div>
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Tirar certificação <strong>AZ-900 Microsoft Azure</strong></p>
+          <div class="brag-stack" aria-label="Tecnologias e práticas"><span>NestJS</span><span>TypeScript</span><span>DDD</span><span>Arquitetura hexagonal</span></div>
+        </article>
+
+        <article class="section brag-case" id="case-platform">
+          <span class="section-label">02 — Plataforma</span>
+          <h2 class="section-title">Migração de infraestrutura e observabilidade</h2>
+          <div class="brag-case-grid">
+            <p><strong>Contexto</strong>Serviços hospedados em Elastic Beanstalk precisavam de uma plataforma com práticas de entrega e operação mais integradas.</p>
+            <p><strong>Decisão</strong>Colaborar na transição para Kubernetes e GitOps, coordenando as mudanças com a equipe de plataforma.</p>
+            <p><strong>Contribuição</strong>Participei da migração e da configuração de Argo CD e Grafana no fluxo de operação.</p>
+            <p><strong>Resultado</strong>Mais visibilidade operacional e uma rotina de entrega alinhada à nova infraestrutura.</p>
           </div>
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Avançar para trilha de <strong>Arquiteto na Avanade</strong> (1:1 com André Racz)</p>
+          <div class="brag-stack" aria-label="Tecnologias e práticas"><span>Kubernetes</span><span>Argo CD</span><span>Grafana</span><span>AWS</span></div>
+        </article>
+
+        <article class="section brag-case" id="case-notifications">
+          <span class="section-label">03 — Integração</span>
+          <h2 class="section-title">Integração de notificações</h2>
+          <div class="brag-case-grid">
+            <p><strong>Contexto</strong>Uma integração de notificações dependia de comunicação em tempo real entre código executado no servidor e no navegador.</p>
+            <p><strong>Decisão</strong>Investigar o ciclo de execução do Next.js para separar corretamente responsabilidades de servidor e cliente.</p>
+            <p><strong>Contribuição</strong>Identifiquei e corrigi o conflito de contexto que impedia a integração com o serviço de notificações.</p>
+            <p><strong>Resultado</strong>A funcionalidade de notificações pôde seguir para entrega junto ao produto.</p>
           </div>
-          <div class="objective-item">
-            <div class="obj-checkbox"></div>
-            <p>Atualizar <strong>LinkedIn e CV</strong> com impacto real dos projetos</p>
+          <div class="brag-stack" aria-label="Tecnologias e práticas"><span>Next.js</span><span>JavaScript</span><span>WebSockets</span><span>OneSignal</span></div>
+        </article>
+
+        <article class="section brag-case" id="case-rag">
+          <span class="section-label">04 — IA aplicada</span>
+          <h2 class="section-title">Prova de conceito de busca com contexto</h2>
+          <div class="brag-case-grid">
+            <p><strong>Contexto</strong>Era necessário avaliar como modelos de linguagem poderiam responder a perguntas com base em conhecimento de domínio.</p>
+            <p><strong>Decisão</strong>Explorar uma arquitetura de geração aumentada por recuperação (RAG), conectando recuperação de conteúdo a um modelo de linguagem.</p>
+            <p><strong>Contribuição</strong>Projetei e desenvolvi a prova de conceito, incluindo a orquestração com LangChain e a API da OpenAI.</p>
+            <p><strong>Resultado</strong>Uma demonstração funcional para avaliar a abordagem e informar próximos passos técnicos.</p>
           </div>
-        </div>
+          <div class="brag-stack" aria-label="Tecnologias e práticas"><span>RAG</span><span>LangChain</span><span>OpenAI API</span></div>
+        </article>
       </section>
-
-      <!-- IMPACTO -->
-      <section class="section" id="impacto">
-        <span class="section-label">02 — resultados</span>
-        <h2 class="section-title">Projetos com Impacto Mensurável</h2>
-        <div class="impact-table-scroll" role="region" aria-label="Projetos e resultados" tabindex="0">
-          <table class="impact-table">
-            <thead>
-            <tr>
-              <th>Período</th>
-              <th>Projeto</th>
-              <th>O que fiz</th>
-              <th>Impacto</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2019–2021</td>
-              <td>
-                <strong>YDUQS / Estácio</strong>
-                <div><span class="tag">React Native</span> <span class="tag">Node.js</span></div>
-              </td>
-              <td>Refatorei e subi versão do app em tempo recorde; mentorei o backend em JavaScript avançado</td>
-              <td>Base usada por 2+ anos; ~200k acessos/mês sustentados pelo maior grupo de educação do Brasil (+700k alunos)</td>
-            </tr>
-            <tr>
-              <td>2021–2022</td>
-              <td>
-                <strong>Afya — OneSignal</strong>
-                <div><span class="tag">Next.js</span> <span class="tag">GoLang</span> <span class="tag">RabbitMQ</span></div>
-              </td>
-              <td>Desbloqueei integração OneSignal que time anterior não conseguiu; implementei RabbitMQ + GoLang</td>
-              <td>Funcionalidade de notificação entregue no prazo com impacto direto no engajamento de usuários</td>
-            </tr>
-            <tr>
-              <td>2023–hoje</td>
-              <td>
-                <strong>Afya — Campaign (Líder Interino)</strong>
-                <div><span class="tag">NestJS</span> <span class="tag">Next.js 15</span> <span class="tag">Keycloak</span> <span class="tag">K8s</span></div>
-              </td>
-              <td>Liderei 2 projetos simultâneos; implementei Keycloak ponta-a-ponta, CI/CD, Next.js 15, infra Kubernetes</td>
-              <td>Plataforma de campanhas desbloqueada; escalabilidade resolvida; frontend refatorado</td>
-            </tr>
-            <tr>
-              <td>2023–hoje</td>
-              <td>
-                <strong>Afya — Manutenção</strong>
-                <div><span class="tag">AWS</span> <span class="tag">Serverless</span></div>
-              </td>
-              <td>Mantive base de dados nacional de médicos do Brasil</td>
-              <td>Estabilidade e zero incidentes críticos</td>
-            </tr>
-            <tr>
-              <td>2025</td>
-              <td>
-                <strong>Afya — POC Chatbot IA</strong>
-                <div><span class="tag">GPT</span> <span class="tag">LangChain</span> <span class="tag">RAG</span></div>
-              </td>
-              <td>Projetei e desenvolvi do zero POC de chatbot com GPT + LangChain + RAG para domínio farmacêutico</td>
-              <td>Entregue <strong>1 semana antes do prazo</strong>; primeiro projeto de IA generativa na conta</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- LIDERANÇA -->
-      <section class="section" id="lideranca">
-        <span class="section-label">03 — arquitetura</span>
-        <h2 class="section-title">Liderança Técnica e Arquitetura</h2>
-        <ul class="bullet-list">
-          <li><strong>Migração Serverless → NestJS:</strong> Identifiquei gargalo de escalabilidade (muitos endpoints estourando o limite do Serverless Framework) e liderei a migração para NestJS — mentorando o time durante toda a transição</li>
-          <li><strong>Migração de infra ElasticBeanstalk → Kubernetes + ArgoCD + Grafana:</strong> Coordenei com time de SRE do cliente aumentando observabilidade e resiliência</li>
-          <li><strong>Keycloak ponta a ponta:</strong> Arquitetei e implementei toda a camada de autenticação do projeto Campaign com controle granular de permissões para 15 usuários internos</li>
-          <li><strong>CI/CD com GitHub Actions:</strong> Configurei pipelines do zero para 2 projetos, padronizando o processo de entrega</li>
-          <li><strong>Next.js 15 — Base do frontend Campaign 2.0:</strong> Migrei, refatorei e criei a estrutura base do novo frontend da plataforma de campanhas</li>
-          <li><strong>POC Chatbot + RAG com GPT + LangChain:</strong> Projetei e desenvolvi do zero — entregue 1 semana antes do prazo para suportar lançamento de medicamento de laboratório farmacêutico</li>
-          <li><strong>MCP do Figma para tokens Tailwind:</strong> Primeiro no projeto a usar essa abordagem — acelerou significativamente a implementação do design system</li>
-          <li><strong>Apoiei Inglide (backend lead):</strong> Decisões de arquitetura → módulo de Config/Envs nível enterprise com NestJS</li>
-        </ul>
-      </section>
-
-      <!-- MENTORIA -->
-      <section class="section" id="mentoria">
-        <span class="section-label">04 — pessoas</span>
-        <h2 class="section-title">Colaboração e Mentoria</h2>
-        <div class="mentor-grid">
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Inglide</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Decisões de arquitetura do backend
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Implementação do módulo de Config/Envs nível enterprise com NestJS
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Felipe Gasparotto</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Docker + docker-compose + LocalStack para simular AWS S3 localmente
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Evitou retrabalho: implementou upload S3 sem precisar de ambiente AWS de QA provisionado
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Time YDUQS</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Mentoria em JavaScript avançado durante missão presencial no RJ
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Manteve padrão de qualidade e velocidade de entrega com time reduzido
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Time Afya Backend</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Mentorei migração Serverless → NestJS
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Escalabilidade desbloqueada; time autônomo na nova arquitetura
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div>
-              <div class="mentor-name">Time Afya Infra</div>
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Como ajudei</span>
-              Coordenei migração ElasticBeanstalk → Kubernetes com SRE do cliente
-            </div>
-            <div class="mentor-field">
-              <span class="mentor-field-label">Resultado</span>
-              Observabilidade e resiliência da infra aumentadas
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- STACK -->
-      <section class="section" id="stack">
-        <span class="section-label">05 — skills</span>
-        <h2 class="section-title">Stack por Nível de Proficiência</h2>
-
-        <div class="stack-level">
-          <div class="stack-level-title">
-            <span class="stack-dot expert"></span>
-            Especialidade — usa em produção, mentora outros
-          </div>
-          <div class="stack-tags">
-            <span class="stack-tag">NestJS</span>
-            <span class="stack-tag">Next.js</span>
-            <span class="stack-tag">Node.js</span>
-            <span class="stack-tag">TypeScript</span>
-            <span class="stack-tag">React Native</span>
-            <span class="stack-tag">React</span>
-            <span class="stack-tag">Arquitetura Hexagonal</span>
-            <span class="stack-tag">DDD</span>
-            <span class="stack-tag">AWS</span>
-            <span class="stack-tag">Docker</span>
-            <span class="stack-tag">GitHub Actions</span>
-          </div>
-        </div>
-
-        <div class="stack-level">
-          <div class="stack-level-title">
-            <span class="stack-dot proficient"></span>
-            Proficiente — usou em projetos reais
-          </div>
-          <div class="stack-tags">
-            <span class="stack-tag">GoLang</span>
-            <span class="stack-tag">RabbitMQ</span>
-            <span class="stack-tag">Keycloak</span>
-            <span class="stack-tag">Kubernetes</span>
-            <span class="stack-tag">Serverless Framework</span>
-            <span class="stack-tag">AWS Amplify</span>
-            <span class="stack-tag">AWS Lambda</span>
-            <span class="stack-tag">S3</span>
-            <span class="stack-tag">LocalStack</span>
-            <span class="stack-tag">ArgoCD</span>
-            <span class="stack-tag">Grafana</span>
-            <span class="stack-tag">TDD</span>
-          </div>
-        </div>
-
-        <div class="stack-level">
-          <div class="stack-level-title">
-            <span class="stack-dot know"></span>
-            Conhecimento — usou pontualmente
-          </div>
-          <div class="stack-tags">
-            <span class="stack-tag">ElasticBeanstalk</span>
-            <span class="stack-tag">Ngrok</span>
-            <span class="stack-tag">OneSignal</span>
-            <span class="stack-tag">Google Ads API</span>
-            <span class="stack-tag">Figma MCP</span>
-            <span class="stack-tag">LangChain</span>
-            <span class="stack-tag">OpenAI API</span>
-            <span class="stack-tag">RAG</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- SITUAÇÕES DIFÍCEIS -->
-      <section class="section" id="situacoes">
-        <span class="section-label">06 — resiliência</span>
-        <h2 class="section-title">Situações Difíceis que Gerenciei Bem</h2>
-        <div class="situation-list">
-          <div class="situation-card">
-            <div class="situation-title">Integração OneSignal sem documentação</div>
-            <div class="situation-body">Time anterior não tinha conseguido. Resolvi o problema de websocket server-side/client-side do Next.js sob pressão de prazo — entregue no tempo, desbloqueando a funcionalidade de notificações que travava o projeto.</div>
-          </div>
-          <div class="situation-card">
-            <div class="situation-title">Calendário de slots no frontend</div>
-            <div class="situation-body">O time não conseguia implementar a tempo. Absorvi o escopo, implementei e entreguei dentro da janela de negócio sem atrasar as demais entregas dos dois projetos simultâneos.</div>
-          </div>
-          <div class="situation-card">
-            <div class="situation-title">Gargalo de escalabilidade Serverless</div>
-            <div class="situation-body">Identifiquei o limite técnico do framework antes que virasse crise de produção. Propus e liderou a migração para NestJS sem interrupção dos projetos em andamento.</div>
-          </div>
-          <div class="situation-card">
-            <div class="situation-title">2 projetos simultâneos como líder interino</div>
-            <div class="situation-body">Coordenei entregas, priorização e time em Campaign e Manutenção sem ter o título formal de tech lead — e sem perder nenhuma data crítica de negócio.</div>
-          </div>
-        </div>
-      </section>
-
-    </div><!-- /container -->
+    </div>
   </main>
 
-  <!-- FOOTER -->
   <footer id="page-footer">
-    <div class="container">
-      <p>
-        <a href="/">← voltar à Bio</a>
-        &nbsp;·&nbsp;
-        <span>☕</span> &nbsp;·&nbsp;
-        anime underground &nbsp;·&nbsp; muito café
-      </p>
-    </div>
+    <div class="container"><p><a href="/">← voltar à Bio</a> &nbsp;·&nbsp; Sérgio Santos · Brasil</p></div>
   </footer>
-
 </body>
 </html>

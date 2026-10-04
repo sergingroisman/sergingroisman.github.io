@@ -964,10 +964,49 @@ body.arcade-page::before
   color: $muted
   font-size: 13px
 
+.arcade-cv .tl-results
+  display: grid
+  gap: 7px
+  max-width: 760px
+  margin: 0 0 12px
+  padding: 0
+  list-style: none
+
+.arcade-cv .tl-results li
+  position: relative
+  padding-left: 17px
+  color: $muted
+  font-size: 13px
+  line-height: 1.7
+
+.arcade-cv .tl-results li::before
+  position: absolute
+  left: 0
+  color: $magenta
+  content: '›'
+
 .arcade-cv .tl-tag
   font-size: 10px
 
-/* Brag responsive details and explicit print affordance. */
+/* CV skills are grouped by relevance rather than presented as an unranked inventory. */
+.arcade-cv .cv-skill-groups
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 24px 30px
+
+.arcade-cv .cv-skill-group h3
+  margin: 0 0 10px
+  color: $muted
+  font: 500 12px/1.5 $mono
+  letter-spacing: .05em
+  text-transform: uppercase
+
+/* Brag case studies reuse the site's existing palette, type and print affordance. */
+.arcade-brag #hero
+  min-height: 0
+  padding: 92px 0 34px
+  background: transparent
+
 .arcade-brag .hero-title
   font-size: clamp(2.65rem, 5.4vw, 4rem)
   text-transform: none
@@ -975,6 +1014,61 @@ body.arcade-page::before
 
 .arcade-brag .hero-title-accent
   color: $gold
+
+.arcade-brag .brag-intro
+  max-width: 760px
+  margin: 30px 0 22px
+  color: $muted
+  font-size: 15px
+  line-height: 1.8
+
+.arcade-brag .brag-index
+  display: flex
+  flex-wrap: wrap
+  gap: 8px 16px
+  padding: 15px 0 20px
+  border-bottom: 1px solid rgba(168, 121, 220, .3)
+
+.arcade-brag .brag-index a
+  color: $lavender
+  font: 500 12px/1.5 $mono
+  text-decoration: underline
+  text-underline-offset: 3px
+
+.arcade-brag .brag-case
+  padding: 34px 0
+
+.arcade-brag .brag-case-grid
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 12px 28px
+
+.arcade-brag .brag-case-grid p
+  margin: 0
+  color: $muted
+  font-size: 14px
+  line-height: 1.7
+
+.arcade-brag .brag-case-grid strong
+  display: block
+  margin-bottom: 4px
+  color: $paper
+  font: 500 11px/1.4 $mono
+  letter-spacing: .06em
+  text-transform: uppercase
+
+.arcade-brag .brag-stack
+  display: flex
+  flex-wrap: wrap
+  gap: 7px
+  margin-top: 18px
+
+.arcade-brag .brag-stack span
+  padding: 4px 8px
+  border: 1px solid $line
+  background: $surface
+  color: $gold
+  font: 500 11px/1.4 $mono
 
 .arcade-brag #hero::after
   background: linear-gradient(to top, rgba(129, 82, 223, .12), transparent)
@@ -1196,6 +1290,9 @@ body.arcade-page::before
   .arcade-cv .timeline-item
     grid-template-columns: 1fr
     gap: 5px
+  .arcade-cv .cv-skill-groups
+    grid-template-columns: 1fr
+    gap: 18px
   .arcade-cv .timeline-item::after,
   .arcade-cv .tl-body::before
     display: none
@@ -1218,6 +1315,13 @@ body.arcade-page::before
     white-space: normal
   .arcade-brag .section-title
     line-height: 1.15
+  .arcade-brag .brag-case-grid
+    grid-template-columns: 1fr
+    gap: 12px
+  .arcade-brag .brag-case
+    padding: 26px 0
+  .arcade-brag .brag-index
+    gap: 8px 12px
 
 @media (max-width: 420px)
   .hub-brand,
@@ -1291,13 +1395,15 @@ body.arcade-page::before
   .arcade-brag .stack-level-title
     color: #17121c !important
   .arcade-brag .hero-title,
+  .arcade-brag .hero-title-accent,
   .arcade-brag .section-title,
   .arcade-brag .section-label,
   .arcade-brag .hero-eyebrow,
   .arcade-brag strong,
   .arcade-brag a,
   .arcade-brag .mentor-name,
-  .arcade-brag .situation-title
+  .arcade-brag .situation-title,
+  .arcade-brag #hero .hero-title-accent
     color: #17121c !important
   .arcade-brag .section
     padding: 14pt 0 !important
@@ -1324,5 +1430,20 @@ body.arcade-page::before
     color: #17121c !important
     border-color: #888 !important
     background: #fff !important
-  .arcade-brag #page-footer
+  .arcade-brag #page-footer,
+  .arcade-brag .brag-index,
+  .arcade-brag .brag-portrait
     display: none !important
+  .arcade-brag .brag-intro,
+  .arcade-brag .brag-case-grid p,
+  .arcade-brag .brag-case-grid strong,
+  .arcade-brag .brag-stack span
+    color: #17121c !important
+  .arcade-brag .brag-case
+    padding: 10pt 0 !important
+    border-color: #aaa !important
+    break-inside: avoid
+    page-break-inside: avoid
+  .arcade-brag .brag-stack span
+    border-color: #888 !important
+    background: #fff !important
